@@ -1,0 +1,39 @@
+{
+  "name": "root",
+  "description": "Monorepo for my hapi plugins",
+  "author": {
+    "name": "Giacomo Debidda",
+    "email": "giacomo@giacomodebidda.com",
+    "url": "https://giacomodebidda.com/"
+  },
+  "homepage": "https://github.com/jackdbd/matsuri",
+  "private": true,
+  "type": "module",
+  "keywords": [
+    "hapi",
+    "monorepo",
+    "plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackdbd/matsuri"
+  },
+  "bugs": {
+    "url": "https://github.com/jackdbd/matsuri/issues?q=is%3Aissue+label%3Abug"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "scripts": {
+    "format": "npm run format --workspaces --if-present",
+  },
+  "devDependencies": {
+    "@types/hapi__hapi": "^20.0.12",
+    "prettier": "^2.6.2",
+    "typescript": "^4.7.3"
+  }
+}
