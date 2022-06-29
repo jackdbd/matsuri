@@ -9,7 +9,7 @@ secrets/*
 !secrets/README.md
 
 # test coverage
-packages/**/coverage/
+**/coverage/
 
 # Typescript compilation output files for libraries and applications
 packages/**/lib/

@@ -1,0 +1,60 @@
+{
+  "name": "@jackdbd/demo-app",
+  "version": "0.0.1",
+  "description": "Hapi application to test and showcase the usage of several Hapi plugins",
+  "author": {
+    "name": "Giacomo Debidda",
+    "email": "giacomo@giacomodebidda.com",
+    "url": "https://giacomodebidda.com/"
+  },
+  "private": true,
+  "keywords": [
+    "hapi"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackdbd/matsuri"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "type": "module",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./lib/*.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "CHANGELOG.md",
+    "api-docs",
+    "lib"
+  ],
+  "scripts": {
+    "build": "run-s 'build:ts' --print-label",
+    "build:ts": "tsc -p tsconfig.json",
+    "clean": "rimraf dist/ tsconfig.tsbuildinfo",
+    "format": "../../scripts/format.mjs",
+    "lint": "eslint --config ../../config/eslint.cjs",
+    "nuke": "npm run clean && rimraf node_modules 'package-lock.json'",
+    "precommit": "lint-staged --config ../../config/lint-staged.cjs",
+    "size": "pkg-size ./dist --sort-by=brotli --ignore-files {*.d.ts,*.map}",
+    "start:development": "DEBUG=demo-app/* NODE_ENV=development TELEGRAM=$(cat ../../secrets/telegram.json) tsm ./src/main.ts"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^20.0.0",
+    "@jackdbd/hapi-telegram-plugin": "*",
+    "exiting": "6.1.0",
+    "hapi-dev-errors": "4.0.0",
+    "joi": "^17.0.0"
+  },
+  "peerDependencies": {},
+  "devDependencies": {}
+}
