@@ -10,6 +10,7 @@ const pkg = JSON.parse(json)
 export default {
   multiple: false,
   name: 'telegram',
+  once: true,
   pkg,
   register,
   requirements: {
