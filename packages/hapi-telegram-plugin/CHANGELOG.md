@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## @jackdbd/hapi-telegram-plugin 1.0.0-alpha.2 (2022-07-02)
+
+* fix(hapi-telegram-plugin): add once: true ([09d897a](https://github.com/jackdbd/matsuri/commit/09d897a))
+
 ## @jackdbd/hapi-telegram-plugin 1.0.0-alpha.1 (2022-07-02)
 
 * refactor: cleanup ([85c9acf](https://github.com/jackdbd/matsuri/commit/85c9acf))
