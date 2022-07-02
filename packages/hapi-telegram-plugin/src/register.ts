@@ -1,33 +1,35 @@
 import Joi from 'joi'
 import type Hapi from '@hapi/hapi'
-import { register_options as register_options_schema } from './schemas.js'
+import Hoek from '@hapi/hoek'
+import {
+  app_human_readable_name,
+  app_technical_name,
+  app_version,
+  telegram_chat_id,
+  telegram_token
+} from './schemas.js'
 import { makeRequestHandler } from './handlers.js'
-import type { ConfigMakeRequestHandler, Options } from './handlers.js'
+import type { Options } from './handlers.js'
 
-// const DEFAULT: Required<Options> = {
-//   path: '/hello'
-// }
+const internals = {
+  schema: Joi.object().keys({
+    app_human_readable_name: app_human_readable_name.default('My App'),
+    app_technical_name: app_technical_name.default('my-cloud-run-service-id'),
+    app_version: app_version.default('latest'),
+    chat_id: telegram_chat_id.required(),
+    token: telegram_token.required()
+  })
+}
 
-export const register = async (
-  server: Hapi.Server,
-  provided_options?: Options
-) => {
-  Joi.assert(provided_options, register_options_schema)
-  // const path = options?.path || DEFAULT.path
-  // const { error, value, warning } = register_options_schema.validate(options)
-  // console.log('🚀 ~ register ~ error, value, warning', error, value, warning)
+export const register = (server: Hapi.Server, options?: Options) => {
+  const result = internals.schema.validate(options)
+  Hoek.assert(!result.error, result.error && result.error.annotate())
 
-  const config: ConfigMakeRequestHandler = {
-    app_human_readable_name: 'My Awesome app',
-    app_technical_name: 'some-cloud-run-service-id',
-    app_version: 'latest',
-    chat_id: '',
-    server,
-    token: ''
-  }
-  Object.assign(config, provided_options)
+  const config = { ...result.value, server }
 
   server.events.on('request', makeRequestHandler(config))
+  // in alternative, I think I could also do something like this
+  // https://github.com/hapijs/scooter/blob/master/lib/index.js
 
   server.log(['lifecycle'], {
     message: `Hapi server registered the Telegram plugin.`

@@ -1,15 +1,19 @@
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { register } from './register.js'
 
 export type { Options } from './handlers.js'
 
+const json = readFileSync(join('.', 'package.json'), { encoding: 'utf-8' })
+const pkg = JSON.parse(json)
+
 export default {
-  // dependencies,
   multiple: false,
   name: 'telegram',
+  pkg,
   register,
   requirements: {
     hapi: '>=20.0.0'
-    // node: '>=16.0.0'
   },
-  version: '0.0.1'
+  version: pkg.version
 }

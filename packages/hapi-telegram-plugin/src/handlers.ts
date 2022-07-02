@@ -4,7 +4,7 @@ import { errorText } from '@jackdbd/telegram-text-messages'
 import type { TelegramChatId, TelegramToken } from './types.js'
 import { isErrorRequest } from './predicates.js'
 
-export interface ConfigErrorRequestHandler {
+interface ConfigErrorRequestHandler {
   app_human_readable_name: string
   app_technical_name: string
   app_version: string
@@ -22,7 +22,7 @@ export interface Options {
   token: TelegramToken
 }
 
-export interface ConfigMakeRequestHandler extends Options {
+interface ConfigMakeRequestHandler extends Options {
   server: Hapi.Server
 }
 
