@@ -1,0 +1,69 @@
+{
+  "name": "@jackdbd/hapi-telegram-plugin",
+  "version": "1.0.0-alpha.2",
+  "description": "Hapi plugin for Telegram",
+  "author": {
+    "name": "Giacomo Debidda",
+    "email": "giacomo@giacomodebidda.com",
+    "url": "https://giacomodebidda.com/"
+  },
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "hapi",
+    "plugin",
+    "telegram"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackdbd/matsuri"
+  },
+  "homepage": "https://github.com/jackdbd/matsuri/tree/main/packages/hapi-telegram-plugin#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "type": "module",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./lib/*.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "lib"
+  ],
+  "scripts": {
+    "build": "run-s 'build:ts' --print-label",
+    "build:ts": "tsc -p tsconfig.json",
+    "clean": "rimraf lib/ tsconfig.tsbuildinfo",
+    "format": "../../scripts/format.mjs",
+    "lint": "eslint --config ../../config/eslint.cjs",
+    "nuke": "npm run clean && rimraf node_modules 'package-lock.json'",
+    "precommit": "lint-staged --config ../../config/lint-staged.cjs",
+    "size": "pkg-size ./lib --sort-by=brotli --ignore-files {*.d.ts,*.map}",
+    "test": "NODE_OPTIONS=--experimental-vm-modules TELEGRAM=$(cat ../../secrets/telegram.json) jest --config ../../config/jest.cjs --rootDir ../../ --selectProjects hapi-telegram-plugin",
+    "test:ci": "NODE_OPTIONS=--experimental-vm-modules jest --config ../../config/jest.cjs --rootDir ../../ --ci --coverage --selectProjects hapi-telegram-plugin"
+  },
+  "dependencies": {
+    "@jackdbd/notifications": "1.0.3",
+    "@jackdbd/telegram-text-messages": "1.0.2"
+  },
+  "peerDependencies": {
+    "@hapi/hapi": ">=20.0.0",
+    "joi": ">=17.0.0"
+  },
+  "devDependencies": {}
+}
