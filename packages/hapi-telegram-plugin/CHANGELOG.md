@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## @jackdbd/hapi-telegram-plugin 1.0.0 (2022-07-11)
+
+
+### Features
+
+* **hapi-telegram-plugin:** add package ([cdb05c7](https://github.com/jackdbd/matsuri/commit/cdb05c7867637075f9618983cf378c01e61c4945))
+
+
+### Bug Fixes
+
+* **hapi-telegram-plugin:** add once: true ([09d897a](https://github.com/jackdbd/matsuri/commit/09d897a837ab66f375658656c2218ecd3dc69470))
+
 ## @jackdbd/hapi-telegram-plugin 1.0.0-alpha.2 (2022-07-02)
 
 * fix(hapi-telegram-plugin): add once: true ([09d897a](https://github.com/jackdbd/matsuri/commit/09d897a))
