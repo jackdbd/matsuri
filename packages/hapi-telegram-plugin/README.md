@@ -13,4 +13,10 @@ npm install @jackdbd/hapi-telegram-plugin
 
 ## Configuration
 
+### Required parameters
+
+TODO
+
+### Options
+
 TODO
