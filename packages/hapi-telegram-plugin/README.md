@@ -10,3 +10,7 @@ Hapi plugin that report error messages to a Telegram chat of your choice.
 ```sh
 npm install @jackdbd/hapi-telegram-plugin
 ```
+
+## Configuration
+
+TODO
