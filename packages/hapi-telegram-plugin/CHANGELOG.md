@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## @jackdbd/hapi-telegram-plugin [1.1.0-canary.1](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@1.0.0...@jackdbd/hapi-telegram-plugin@1.1.0-canary.1) (2022-07-11)
+
+
+### Features
+
+* **hapi-telegram-plugin:** update README ([46b3e89](https://github.com/jackdbd/matsuri/commit/46b3e8960c0d210bd7cdedf54bf240bea3933cd7))
+
 ## @jackdbd/hapi-telegram-plugin 1.0.0 (2022-07-11)
 
 
