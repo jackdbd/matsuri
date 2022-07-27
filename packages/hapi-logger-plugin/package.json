@@ -1,20 +1,27 @@
 {
-  "name": "@jackdbd/demo-app",
+  "name": "@jackdbd/hapi-logger-plugin",
   "version": "0.0.1",
-  "description": "Hapi application to test and showcase the usage of several Hapi plugins",
+  "description": "Hapi plugin for a JSON logger",
   "author": {
     "name": "Giacomo Debidda",
     "email": "giacomo@giacomodebidda.com",
     "url": "https://giacomodebidda.com/"
   },
-  "private": true,
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
-    "hapi"
+    "hapi",
+    "logger",
+    "plugin"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jackdbd/matsuri"
   },
+  "homepage": "https://github.com/jackdbd/matsuri/tree/main/packages/hapi-logger-plugin#readme",
   "engines": {
     "node": ">=16.0.0"
   },
@@ -34,28 +41,30 @@
   },
   "files": [
     "CHANGELOG.md",
-    "api-docs",
+    "LICENSE",
+    "README.md",
     "lib"
   ],
   "scripts": {
     "build": "run-s 'build:ts' --print-label",
     "build:ts": "tsc -p tsconfig.json",
-    "clean": "rimraf dist/ tsconfig.tsbuildinfo",
+    "clean": "rimraf lib/ tsconfig.tsbuildinfo",
     "format": "../../scripts/format.mjs",
     "lint": "eslint --config ../../config/eslint.cjs",
     "nuke": "npm run clean && rimraf node_modules 'package-lock.json'",
     "precommit": "lint-staged --config ../../config/lint-staged.cjs",
-    "size": "pkg-size ./dist --sort-by=brotli --ignore-files {*.d.ts,*.map}",
-    "start:development": "DEBUG=app NODE_ENV=development TELEGRAM=$(cat ../../secrets/telegram.json) tsm ./src/main.ts"
+    "size": "pkg-size ./lib --sort-by=brotli --ignore-files {*.d.ts,*.map}",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --config ../../config/jest.cjs --rootDir ../../ --selectProjects hapi-logger-plugin",
+    "test:ci": "NODE_OPTIONS=--experimental-vm-modules jest --config ../../config/jest.cjs --rootDir ../../ --ci --coverage --selectProjects hapi-logger-plugin"
   },
   "dependencies": {
-    "@hapi/hapi": "^20.0.0",
-    "@jackdbd/hapi-logger-plugin": "*",
-    "@jackdbd/hapi-telegram-plugin": "*",
-    "exiting": "6.1.0",
-    "hapi-dev-errors": "4.0.0",
-    "joi": "^17.0.0"
+    "@jackdbd/checks": "^1.3.0",
+    "@jackdbd/utils": "1.2.0-canary.1",
+    "debug": "^4.3.4"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "@hapi/hapi": ">=20.0.0",
+    "joi": ">=17.0.0"
+  },
   "devDependencies": {}
 }

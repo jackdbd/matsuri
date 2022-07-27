@@ -1,6 +1,7 @@
 import Hapi from '@hapi/hapi'
-import hapi_dev_errors from 'hapi-dev-errors'
-import telegramPlugin from '@jackdbd/hapi-telegram-plugin'
+// import hapi_dev_errors from 'hapi-dev-errors'
+import logger from '@jackdbd/hapi-logger-plugin'
+import telegram from '@jackdbd/hapi-telegram-plugin'
 import type { Config } from './interfaces.js'
 import { brokenGet } from './routes/broken.js'
 import { helloGet } from './routes/hello.js'
@@ -10,7 +11,7 @@ export const app = async (config: Config) => {
     app_human_readable_name,
     app_technical_name,
     app_version,
-    environment,
+    // environment,
     port,
     telegram_chat_id,
     telegram_token
@@ -22,18 +23,25 @@ export const app = async (config: Config) => {
     debug: false,
     port
   })
-
-  await server.register({
-    plugin: hapi_dev_errors,
-    options: {
-      showErrors: environment !== 'production'
-    }
-  })
-
   server.log(['lifecycle'], { message: `HTTP server created.` })
 
   server.register({
-    plugin: telegramPlugin,
+    plugin: logger,
+    options: {
+      namespace: 'app'
+    }
+  })
+  server.log(['plugin'], { message: `plugin ${logger.name} registered` })
+
+  // await server.register({
+  //   plugin: hapi_dev_errors,
+  //   options: {
+  //     showErrors: environment !== 'production'
+  //   }
+  // })
+
+  server.register({
+    plugin: telegram,
     options: {
       app_human_readable_name,
       app_technical_name,
@@ -42,14 +50,13 @@ export const app = async (config: Config) => {
       token: telegram_token
     }
   })
-
-  server.log(['lifecycle'], { message: `Telegram plugin registered.` })
+  server.log(['plugin'], { message: `plugin ${telegram.name} registered` })
 
   server.route(brokenGet({ app_human_readable_name }))
+  server.log(['route'], { message: `route /broken GET registered` })
 
   server.route(helloGet({ app_human_readable_name }))
-
-  server.log(['lifecycle'], { message: `all routes registered.` })
+  server.log(['route'], { message: `route /hello GET registered` })
 
   return { server }
 }
