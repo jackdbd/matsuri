@@ -2,7 +2,9 @@ const project = (package_name) => {
   // Jest uses chalk for colors
   // https://github.com/chalk/chalk
   let color
-  if (package_name.indexOf('telegram') === 0) {
+  if (package_name.indexOf('logger') === 0) {
+    color = 'yellow'
+  } else if (package_name.indexOf('telegram') === 0) {
     color = 'blue'
   } else {
     color = 'white'
@@ -59,7 +61,10 @@ const project = (package_name) => {
 }
 
 // https://jestjs.io/docs/configuration#projects-arraystring--projectconfig
-const projects = [project('hapi-telegram-plugin')]
+const projects = [
+  project('hapi-logger-plugin'),
+  project('hapi-telegram-plugin')
+]
 
 const config = {
   projects,

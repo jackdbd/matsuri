@@ -49,5 +49,5 @@ export const provision = async (env: NodeJS.ProcessEnv) => {
     message: `server started on port ${port} [${environment}]`
   })
 
-  return { app_human_readable_name, environment, port }
+  return { app_human_readable_name, environment, port, server }
 }

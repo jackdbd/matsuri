@@ -4,8 +4,8 @@ on:
   pull_request:
   push:
     branches:
-      - main
       - canary
+      - main
 
 jobs:
   build-test-release:
@@ -33,10 +33,15 @@ jobs:
       - name: 🔧 Build all libraries
         run: npm run build
 
-      - name: 🛡️ Audit security
+      - name: 🛡️ Audit security (audit-level high)
+        # https://docs.npmjs.com/cli/v8/commands/npm-audit#audit-level
+        if: ${{ matrix.os }} == 'ubuntu-latest'
+        run: npm audit --audit-level high
+
+      - name: 🛡️ Audit security (audit-level moderate)
         continue-on-error: true
         if: ${{ matrix.os }} == 'ubuntu-latest'
-        run: npm audit --audit-level=moderate
+        run: npm audit --audit-level moderate
 
       - name: 🔍 Test all libraries
         env:
@@ -50,7 +55,6 @@ jobs:
           NPM_TOKEN: ${{ secrets.SEMANTIC_RELEASE_BOT_NPM_TOKEN }}
         run: >
           npx multi-semantic-release
-          --debug
           --ignore-private
           --ignore-packages=packages/demo-app
 

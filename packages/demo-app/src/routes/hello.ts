@@ -10,7 +10,7 @@ export const helloGet = (config: any) => {
     method,
     path,
     handler: async (request: Request, _h: ResponseToolkit) => {
-      request.log(['hello'], {
+      request.log(['handler', 'hello'], {
         message: `${app_human_readable_name} got ${method} request at ${path}`
       })
 
