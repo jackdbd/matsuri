@@ -1,0 +1,66 @@
+{
+  "name": "@jackdbd/hapi-request-event-predicates",
+  "version": "0.0.1",
+  "description": "Predicates that check if Hapi requests are errors, warnings, have certain tags, etc.",
+  "author": {
+    "name": "Giacomo Debidda",
+    "email": "giacomo@giacomodebidda.com",
+    "url": "https://giacomodebidda.com/"
+  },
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "hapi",
+    "predicate"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackdbd/matsuri"
+  },
+  "homepage": "https://github.com/jackdbd/matsuri/tree/main/packages/hapi-request-event-predicates#readme",
+  "engines": {
+    "node": ">=14.19.3"
+  },
+  "type": "module",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client-predicates": "./lib/client-predicates.js",
+    "./server-predicates": "./lib/server-predicates.js",
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./lib/*.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "lib"
+  ],
+  "scripts": {
+    "build": "run-s 'build:ts' --print-label",
+    "build:ts": "tsc -p tsconfig.json",
+    "clean": "rimraf lib/ tsconfig.tsbuildinfo",
+    "format": "../../scripts/format.mjs",
+    "lint": "eslint --config ../../config/eslint.cjs",
+    "nuke": "npm run clean && rimraf node_modules 'package-lock.json'",
+    "precommit": "lint-staged --config ../../config/lint-staged.cjs",
+    "size": "pkg-size ./lib --sort-by=brotli --ignore-files {*.d.ts,*.map}",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --config ../../config/jest.cjs --rootDir ../../ --selectProjects hapi-request-event-predicates",
+    "test:ci": "NODE_OPTIONS=--experimental-vm-modules jest --config ../../config/jest.cjs --rootDir ../../ --ci --coverage --selectProjects hapi-request-event-predicates"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@hapi/hapi": ">=20.0.0"
+  },
+  "devDependencies": {}
+}

@@ -63,6 +63,7 @@ const project = (package_name) => {
 // https://jestjs.io/docs/configuration#projects-arraystring--projectconfig
 const projects = [
   project('hapi-logger-plugin'),
+  project('hapi-request-event-predicates'),
   project('hapi-telegram-plugin')
 ]
 
