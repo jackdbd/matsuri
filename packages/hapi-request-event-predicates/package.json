@@ -55,8 +55,9 @@
     "nuke": "npm run clean && rimraf node_modules 'package-lock.json'",
     "precommit": "lint-staged --config ../../config/lint-staged.cjs",
     "size": "pkg-size ./lib --sort-by=brotli --ignore-files {*.d.ts,*.map}",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --config ../../config/jest.cjs --rootDir ../../ --selectProjects hapi-request-event-predicates",
-    "test:ci": "NODE_OPTIONS=--experimental-vm-modules jest --config ../../config/jest.cjs --rootDir ../../ --ci --coverage --selectProjects hapi-request-event-predicates"
+    "test": "../../scripts/test.mjs",
+    "test:ci": "../../scripts/test.mjs --ci",
+    "test:watch": "run-p \"build:ts -- --watch\" \"test -- --watch\""
   },
   "dependencies": {},
   "peerDependencies": {
