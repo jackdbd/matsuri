@@ -21,3 +21,5 @@ export enum Emoji {
   Teapot = '🫖',
   Warning = '⚠️'
 }
+
+export const TAG = 'hapi-telegram-plugin'

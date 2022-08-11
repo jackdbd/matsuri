@@ -1,7 +1,7 @@
 import Boom from '@hapi/boom'
 import { CHARACTER_LIMIT_TELEGRAM_MESSAGE } from '../lib/constants.js'
 import { unauthorized, serverError } from '../lib/texts.js'
-import { requestId, timestampMs } from './utils.mjs'
+import { requestId, timestampMs } from '../../../scripts/utils.mjs'
 
 describe('unauthorized', () => {
   const request = { route: { method: 'get', path: '/' } }

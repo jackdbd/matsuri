@@ -6,7 +6,7 @@ import {
   isUnauthorizedRequestError,
   makeHasRequestHeader
 } from '../lib/index.js'
-import { makeDispatch } from './utils.mjs'
+import { makeDispatch } from '../../../scripts/utils.mjs'
 
 describe('isClientRequestError', () => {
   it('is true when `error` is Boom.notFound() and `tags` includes both `error` and `handler`', async () => {

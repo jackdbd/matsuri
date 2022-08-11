@@ -1,7 +1,7 @@
 import Boom from '@hapi/boom'
 import Shot from '@hapi/shot'
 import { isServerRequestError } from '../lib/index.js'
-import { makeDispatch } from './utils.mjs'
+import { makeDispatch } from '../../../scripts/utils.mjs'
 
 describe('isServerRequestError', () => {
   it('is true when `error` is Boom.internal() and `tags` includes both `error` and `handler`', async () => {

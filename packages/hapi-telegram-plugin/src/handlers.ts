@@ -1,5 +1,6 @@
 import type Hapi from '@hapi/hapi'
 import { send } from '@jackdbd/notifications/telegram'
+import { TAG } from './constants.js'
 import type { Options, TelegramChatId, TelegramToken } from './interfaces.js'
 
 interface Config extends Required<Options> {
@@ -24,7 +25,7 @@ export const makeHandleRequest = (config: Config) => {
 
     for (const [idx, matcher] of Object.entries(request_event_matchers)) {
       const i = parseInt(idx, 10)
-      server.log(['handler', 'plugin', 'telegram', 'hapi-telegram-plugin'], {
+      server.log(['handler', 'plugin', 'telegram', TAG], {
         message: `check whether request matcher ${i + 1}/${
           request_event_matchers.length
         } matches the predicate`

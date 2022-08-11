@@ -4,6 +4,7 @@ import {
   isServerRequestError,
   isUnauthorizedRequestError
 } from '@jackdbd/hapi-request-event-predicates'
+import { TAG } from './constants.js'
 import { options as schema } from './schemas.js'
 import { makeHandleRequest } from './handlers.js'
 import type { Options, RequestEventMatcher } from './interfaces.js'
@@ -74,7 +75,7 @@ export const register = (server: Hapi.Server, options?: Options) => {
 
   server.events.on('request', handleRequest)
 
-  server.log(['lifecycle', 'plugin', 'telegram', 'hapi-telegram-plugin'], {
+  server.log(['lifecycle', 'plugin', 'telegram', TAG], {
     message: `Hapi server registered the Telegram plugin.`
   })
 }

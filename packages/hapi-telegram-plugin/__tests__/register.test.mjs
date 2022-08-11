@@ -1,6 +1,6 @@
 import { register } from '../lib/register.js'
 import { serverError } from '../lib/texts.js'
-import { testServer } from './utils.mjs'
+import { makeHapiServer } from '../../../scripts/utils.mjs'
 
 describe('register', () => {
   let server
@@ -8,9 +8,9 @@ describe('register', () => {
   const TELEGRAM_CHAT_ID_original = process.env.TELEGRAM_CHAT_ID
   const TELEGRAM_BOT_TOKEN_original = process.env.TELEGRAM_BOT_TOKEN
 
-  beforeAll(async () => {
-    server = await testServer()
-  }, timeout_ms)
+  beforeAll(() => {
+    server = makeHapiServer()
+  })
 
   beforeEach(async () => {
     await server.start()

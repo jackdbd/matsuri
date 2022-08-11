@@ -1,5 +1,3 @@
-// import fs from 'node:fs'
-// import path from 'node:path'
 import {
   isServerRequestError,
   isTeapotRequestError,
@@ -7,7 +5,7 @@ import {
 } from '@jackdbd/hapi-request-event-predicates'
 import plugin from '../lib/index.js'
 import { serverError, teapot, unauthorized } from '../lib/texts.js'
-import { telegramCredentials, testServer } from './utils.mjs'
+import { makeHapiServer, telegramCredentials } from '../../../scripts/utils.mjs'
 
 // const package_json_path = path.join('package.json')
 // const pkg = JSON.parse(fs.readFileSync(package_json_path))
@@ -17,7 +15,7 @@ describe('Hapi server that has registered the hapi-telegram-plugin', () => {
   const timeout_ms = 10000
 
   beforeAll(async () => {
-    server = await testServer()
+    server = makeHapiServer()
 
     const { chat_id, token } = telegramCredentials()
 
