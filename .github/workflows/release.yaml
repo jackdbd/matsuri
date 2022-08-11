@@ -1,7 +1,6 @@
 name: 'release'
 
 on:
-  pull_request:
   push:
     branches:
       - canary
@@ -43,10 +42,16 @@ jobs:
         if: ${{ matrix.os }} == 'ubuntu-latest'
         run: npm audit --audit-level moderate
 
-      - name: 🔍 Test all libraries
+      - name: 🔍 Test library @jackdbd/hapi-request-event-predicates
+        run: npm run test:ci -w packages/hapi-request-event-predicates
+
+      - name: 🔍 Test library @jackdbd/hapi-logger-plugin
+        run: npm run test:ci -w packages/hapi-logger-plugin
+      
+      - name: 🔍 Test library @jackdbd/hapi-telegram-plugin
         env:
           TELEGRAM: ${{ secrets.TELEGRAM }}
-        run: npm run test:ci
+        run: npm run test:ci -w packages/hapi-telegram-plugin
         
       - name: 🚀 Release to npmjs
         env:

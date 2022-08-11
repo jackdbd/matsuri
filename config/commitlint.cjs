@@ -52,6 +52,23 @@ const config = {
   }
 }
 
+// As a reminder, a convential commit message has the following structure:
+//////////////////////////
+// type(scope): subject //
+//////////////////////////
+// type must be one of:
+// - build
+// - chore
+// - ci
+// - docs
+// - feat (triggers a MINOR release)
+// - fix (triggers a PATCH release)
+// - perf
+// - refactor
+// - revert
+// - style
+// - test
+
 // console.log('=== commitlint ===', config)
 
 module.exports = config
