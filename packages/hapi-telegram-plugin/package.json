@@ -23,13 +23,15 @@
   },
   "homepage": "https://github.com/jackdbd/matsuri/tree/main/packages/hapi-telegram-plugin#readme",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=14.19.3"
   },
   "type": "module",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "exports": {
     ".": "./lib/index.js",
+    "./constants": "./lib/constants.js",
+    "./texts": "./lib/texts.js",
     "./package.json": "./package.json"
   },
   "typesVersions": {
@@ -54,11 +56,13 @@
     "nuke": "npm run clean && rimraf node_modules 'package-lock.json'",
     "precommit": "lint-staged --config ../../config/lint-staged.cjs",
     "size": "pkg-size ./lib --sort-by=brotli --ignore-files {*.d.ts,*.map}",
-    "test": "NODE_OPTIONS=--experimental-vm-modules TELEGRAM=$(cat ../../secrets/telegram.json) jest --config ../../config/jest.cjs --rootDir ../../ --selectProjects hapi-telegram-plugin",
-    "test:ci": "NODE_OPTIONS=--experimental-vm-modules jest --config ../../config/jest.cjs --rootDir ../../ --ci --coverage --selectProjects hapi-telegram-plugin"
+    "test": "../../scripts/test.mjs",
+    "test:ci": "../../scripts/test.mjs --ci",
+    "test:watch": "run-p \"build:ts -- --watch\" \"test -- --watch\""
   },
   "dependencies": {
     "@jackdbd/notifications": "1.0.3",
+    "@jackdbd/hapi-request-event-predicates": "1.0.0-canary.1",
     "@jackdbd/telegram-text-messages": "1.0.2"
   },
   "peerDependencies": {

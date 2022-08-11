@@ -1,11 +1,54 @@
-import { testServer } from './utils.mjs'
+// import fs from 'node:fs'
+// import path from 'node:path'
+import {
+  isServerRequestError,
+  isTeapotRequestError,
+  isUnauthorizedRequestError
+} from '@jackdbd/hapi-request-event-predicates'
+import plugin from '../lib/index.js'
+import { serverError, teapot, unauthorized } from '../lib/texts.js'
+import { telegramCredentials, testServer } from './utils.mjs'
 
-describe('Hapi app', () => {
+// const package_json_path = path.join('package.json')
+// const pkg = JSON.parse(fs.readFileSync(package_json_path))
+
+describe('Hapi server that has registered the hapi-telegram-plugin', () => {
   let server
   const timeout_ms = 10000
 
   beforeAll(async () => {
     server = await testServer()
+
+    const { chat_id, token } = telegramCredentials()
+
+    const request_event_matchers = [
+      {
+        name: 'notify of server errors',
+        chat_id,
+        token,
+        predicate: isServerRequestError,
+        text: serverError
+      },
+      {
+        name: 'notify of HTTP 401 (Unauthorized) request errors',
+        chat_id,
+        token,
+        predicate: isUnauthorizedRequestError,
+        text: unauthorized
+      },
+      {
+        name: `notify of HTTP 418 (I'm a Teapot) request errors`,
+        chat_id,
+        token,
+        predicate: isTeapotRequestError,
+        text: teapot
+      }
+    ]
+
+    await server.register({
+      plugin,
+      options: { request_event_matchers }
+    })
   }, timeout_ms)
 
   beforeEach(async () => {
@@ -16,7 +59,6 @@ describe('Hapi app', () => {
     await server.stop()
   }, timeout_ms)
 
-  // no Telegram message will be delivered to the chat, since this is a success
   it('responds with 200', async () => {
     const res = await server.inject({
       method: 'GET',
@@ -27,18 +69,26 @@ describe('Hapi app', () => {
     expect(res.result.message).toBe('all good')
   })
 
-  // a Telegram message will be delivered to the chat, since this is an error
   it('responds with 500', async () => {
     const res = await server.inject({
       method: 'GET',
-      url: '/internal-error'
+      url: '/internal'
     })
 
     expect(res.statusCode).toBe(500)
     expect(res.result.message).toBe('An internal server error occurred')
   })
 
-  // a Telegram message will be delivered to the chat, since this is an error
+  it('responds with 501', async () => {
+    const res = await server.inject({
+      method: 'GET',
+      url: '/not-implemented'
+    })
+
+    expect(res.statusCode).toBe(501)
+    expect(res.result.message).toBe('Not Implemented')
+  })
+
   it('responds with 404', async () => {
     const res = await server.inject({
       method: 'GET',
@@ -49,11 +99,10 @@ describe('Hapi app', () => {
     expect(res.result.message).toBe('Not Found')
   })
 
-  // a Telegram message will be delivered to the chat, since this is an error
   it('responds with 401', async () => {
     const res = await server.inject({
       method: 'GET',
-      url: '/private'
+      url: '/unauthorized'
     })
 
     expect(res.statusCode).toBe(401)

@@ -2,13 +2,16 @@ import fs from 'node:fs'
 import path from 'node:path'
 import Hapi from '@hapi/hapi'
 import Boom from '@hapi/boom'
-import plugin from '../lib/index.js'
 
-const package_json_path = path.join('package.json')
-const pkg = JSON.parse(fs.readFileSync(package_json_path))
+export const requestId = () => `request-id-${Math.floor(Math.random() * 1000)}`
+
+export const timestampMs = () => new Date().getTime()
 
 export const testServer = async () => {
-  const server = Hapi.server({ port: 8080 })
+  const server = Hapi.server({
+    // debug: { log: ['*'], request: ['*'] },
+    port: 8080
+  })
 
   server.route({
     method: 'GET',
@@ -20,17 +23,23 @@ export const testServer = async () => {
 
   server.route({
     method: 'GET',
-    path: '/internal-error',
+    path: '/internal',
     handler: (request, h) => {
-      throw new Error(
-        'this is not the message you will see in the HTTP response'
-      )
+      throw Boom.internal()
     }
   })
 
   server.route({
     method: 'GET',
-    path: '/private',
+    path: '/not-implemented',
+    handler: (request, h) => {
+      throw Boom.notImplemented()
+    }
+  })
+
+  server.route({
+    method: 'GET',
+    path: '/unauthorized',
     handler: (request, h) => {
       throw Boom.unauthorized()
     }
@@ -44,19 +53,40 @@ export const testServer = async () => {
     }
   })
 
-  const json = process.env.TELEGRAM
-  const { chat_id, token } = JSON.parse(json)
-
-  await server.register({
-    plugin,
-    options: {
-      app_human_readable_name: 'Hapi-Telegram-Plugin test app',
-      app_technical_name: pkg.name,
-      app_version: pkg.version,
-      chat_id,
-      token
-    }
-  })
-
   return server
+}
+
+export const telegramCredentials = () => {
+  let json
+  if (process.env.TELEGRAM) {
+    json = process.env.TELEGRAM
+  } else {
+    const filepath = path.resolve('..', '..', 'secrets', 'telegram.json')
+    json = fs.readFileSync(filepath, { encoding: 'utf8' })
+  }
+
+  let chat_id
+  let token
+  if (json) {
+    const creds = JSON.parse(json)
+    chat_id = creds.chat_id
+    token = creds.token
+  }
+
+  if (process.env.TELEGRAM_BOT_TOKEN) {
+    token = process.env.TELEGRAM_BOT_TOKEN
+  }
+
+  if (process.env.TELEGRAM_CHAT_ID) {
+    chat_id = process.env.TELEGRAM_CHAT_ID
+  }
+
+  if (!chat_id) {
+    throw new Error(`no Telegram chat ID is set`)
+  }
+  if (!token) {
+    throw new Error(`no Telegram bot token is set`)
+  }
+
+  return { chat_id, token }
 }
