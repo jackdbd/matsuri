@@ -34,7 +34,7 @@
     "nuke": "npm run clean && rimraf node_modules 'package-lock.json'",
     "precommit": "lint-staged --config ../../config/lint-staged.cjs",
     "size": "pkg-size ./dist --sort-by=brotli --ignore-files {*.d.ts,*.map}",
-    "start:development": "DEBUG=app NODE_ENV=development TELEGRAM=$(cat ../../secrets/telegram.json) tsm ./src/main.ts"
+    "start:development": "NODE_ENV=development TELEGRAM=$(cat ../../secrets/telegram.json) tsm ./src/main.ts"
   },
   "dependencies": {
     "@hapi/hapi": "^20.0.0",

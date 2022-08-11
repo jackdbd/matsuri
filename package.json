@@ -30,6 +30,7 @@
     "npm": ">=7.0.0"
   },
   "scripts": {
+    "app": "npm run start:development -w packages/demo-app",
     "build": "run-s 'build:libs' 'build:apps' --print-label",
     "build:apps": "npm run build -w packages/demo-app",
     "build:libs": "tsc --build --verbose",

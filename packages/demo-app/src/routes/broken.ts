@@ -11,7 +11,7 @@ export const brokenGet = (config: any) => {
     method,
     path,
     handler: async (request: Request, _h: ResponseToolkit) => {
-      request.log(['broken', 'handler'], {
+      request.log(['debug', 'broken', 'handler'], {
         message: `${app_human_readable_name} got ${method} request at ${path}`
       })
 
