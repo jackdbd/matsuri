@@ -30,13 +30,15 @@
     "npm": ">=7.0.0"
   },
   "scripts": {
-    "build": "run-s 'build:ts' --print-label",
-    "build:ts": "tsc --build --verbose",
+    "build": "run-s 'build:libs' 'build:apps' --print-label",
+    "build:apps": "npm run build -w packages/demo-app",
+    "build:libs": "tsc --build --verbose",
     "clean": "npm run clean --workspaces --if-present",
     "format": "npm run format --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "ncu:dev": "ncu --doctor --dep 'dev' --upgrade",
     "nuke": "npm run clean && rm -rf node_modules package-lock.json",
+    "precommit": "npm run precommit --workspaces --if-present",
     "prepare": "husky install",
     "release:dry": "multi-semantic-release --no-ci --dry-run --debug --ignore-private --ignore-packages=packages/demo-app",
     "size": "npm run size --workspaces --if-present",

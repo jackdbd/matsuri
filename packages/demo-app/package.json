@@ -9,6 +9,7 @@
   },
   "private": true,
   "keywords": [
+    "demo",
     "hapi"
   ],
   "repository": {
@@ -16,27 +17,14 @@
     "url": "https://github.com/jackdbd/matsuri"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": "18.3.0"
   },
   "type": "module",
-  "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "module": "dist/main.js",
   "exports": {
-    ".": "./lib/index.js",
+    ".": "./dist/main.js",
     "./package.json": "./package.json"
   },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./lib/*.d.ts"
-      ]
-    }
-  },
-  "files": [
-    "CHANGELOG.md",
-    "api-docs",
-    "lib"
-  ],
   "scripts": {
     "build": "run-s 'build:ts' --print-label",
     "build:ts": "tsc -p tsconfig.json",
@@ -51,6 +39,7 @@
   "dependencies": {
     "@hapi/hapi": "^20.0.0",
     "@jackdbd/hapi-logger-plugin": "*",
+    "@jackdbd/hapi-request-event-predicates": "*",
     "@jackdbd/hapi-telegram-plugin": "*",
     "exiting": "6.1.0",
     "hapi-dev-errors": "4.0.0",
