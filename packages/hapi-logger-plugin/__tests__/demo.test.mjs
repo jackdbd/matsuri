@@ -1,21 +1,17 @@
-import { namespace, testServer } from './utils.mjs'
+import plugin from '../lib/index.js'
+import { makeHapiServer } from '../../../scripts/utils.mjs'
 
-describe('Hapi app', () => {
+describe('Hapi server that has registered the hapi-logger-plugin (no options, structured logging)', () => {
   let server
   const timeout_ms = 10000
-
-  const DEBUG_original = process.env.DEBUG
-  const HAPI_LOGGER_REQUEST_TAGS_original = process.env.HAPI_LOGGER_REQUEST_TAGS
-  const HAPI_LOGGER_SERVER_TAGS_original = process.env.HAPI_LOGGER_SERVER_TAGS
 
   // TODO: use a Jest spy on server.log() and request.log()
 
   beforeAll(async () => {
-    process.env.DEBUG = namespace
-    process.env.HAPI_LOGGER_REQUEST_TAGS = 'error,foo,warning'
-    process.env.HAPI_LOGGER_SERVER_TAGS = 'plugin,route'
-    server = await testServer()
-  }, timeout_ms)
+    server = makeHapiServer()
+
+    await server.register({ plugin })
+  })
 
   beforeEach(async () => {
     await server.start()
@@ -25,59 +21,86 @@ describe('Hapi app', () => {
     await server.stop()
   }, timeout_ms)
 
-  afterAll(async () => {
-    process.env.DEBUG = DEBUG_original
-    process.env.HAPI_LOGGER_REQUEST_TAGS = HAPI_LOGGER_REQUEST_TAGS_original
-    process.env.HAPI_LOGGER_SERVER_TAGS = HAPI_LOGGER_SERVER_TAGS_original
-  })
-
-  it('responds with 200 for GET /foo', async () => {
-    const res = await server.inject({
-      method: 'GET',
-      url: '/foo'
-    })
+  it('responds with 200 for GET /success', async () => {
+    const res = await server.inject({ method: 'GET', url: '/success' })
 
     expect(res.statusCode).toBe(200)
-    expect(res.result.message).toBe('got foo')
   })
 
-  it('responds with 200 for GET /bar', async () => {
-    const res = await server.inject({
-      method: 'GET',
-      url: '/bar'
-    })
-
-    expect(res.statusCode).toBe(200)
-    expect(res.result.message).toBe('got bar')
-  })
-
-  it('responds with 500', async () => {
-    const res = await server.inject({
-      method: 'GET',
-      url: '/internal-error'
-    })
+  it('responds with 500 for /internal', async () => {
+    const res = await server.inject({ method: 'GET', url: '/internal' })
 
     expect(res.statusCode).toBe(500)
     expect(res.result.message).toBe('An internal server error occurred')
   })
+})
 
-  it('responds with 404', async () => {
-    const res = await server.inject({
-      method: 'GET',
-      url: '/nonexistent-path'
+describe('Hapi server that has registered the hapi-logger-plugin (unstructured logging, emoji)', () => {
+  let server
+  const timeout_ms = 10000
+
+  beforeAll(async () => {
+    server = makeHapiServer()
+
+    await server.register({
+      plugin,
+      options: { namespace: 'demo-app' }
     })
-
-    expect(res.statusCode).toBe(404)
-    expect(res.result.message).toBe('Not Found')
   })
 
-  it('responds with 401', async () => {
-    const res = await server.inject({
-      method: 'GET',
-      url: '/private'
-    })
+  beforeEach(async () => {
+    await server.start()
+  }, timeout_ms)
 
-    expect(res.statusCode).toBe(401)
-    expect(res.result.message).toBe('Unauthorized')
+  afterEach(async () => {
+    await server.stop()
+  }, timeout_ms)
+
+  it('responds with 200 for GET /success', async () => {
+    const res = await server.inject({ method: 'GET', url: '/success' })
+
+    expect(res.statusCode).toBe(200)
+  })
+
+  it('responds with 500 for /internal', async () => {
+    const res = await server.inject({ method: 'GET', url: '/internal' })
+
+    expect(res.statusCode).toBe(500)
+    expect(res.result.message).toBe('An internal server error occurred')
+  })
+})
+
+describe('Hapi server that has registered the hapi-logger-plugin (unstructured logging, severity tag)', () => {
+  let server
+  const timeout_ms = 10000
+
+  beforeAll(async () => {
+    server = makeHapiServer()
+
+    await server.register({
+      plugin,
+      options: { namespace: 'demo-app', should_use_emoji_for_severity: false }
+    })
+  })
+
+  beforeEach(async () => {
+    await server.start()
+  }, timeout_ms)
+
+  afterEach(async () => {
+    await server.stop()
+  }, timeout_ms)
+
+  it('responds with 200 for GET /success', async () => {
+    const res = await server.inject({ method: 'GET', url: '/success' })
+
+    expect(res.statusCode).toBe(200)
+  })
+
+  it('responds with 500 for /internal', async () => {
+    const res = await server.inject({ method: 'GET', url: '/internal' })
+
+    expect(res.statusCode).toBe(500)
+    expect(res.result.message).toBe('An internal server error occurred')
   })
 })

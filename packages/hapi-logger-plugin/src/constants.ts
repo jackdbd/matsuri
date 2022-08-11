@@ -1,7 +1,13 @@
-export const PREFIX = `hapi-logger-plugin`
-
 export const TAG = 'hapi-logger-plugin'
 
-export const defaultOptions = {
-  namespace: '*'
-}
+// TODO: export this from tags-logger
+export const SEVERITY_TAG_VALUES = [
+  'debug',
+  'info',
+  'notice',
+  'warning',
+  'error',
+  'critical',
+  'alert',
+  'emergency'
+]
