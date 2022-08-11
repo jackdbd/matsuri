@@ -41,6 +41,7 @@
     "@jackdbd/hapi-logger-plugin": "*",
     "@jackdbd/hapi-request-event-predicates": "*",
     "@jackdbd/hapi-telegram-plugin": "*",
+    "blipp": "4.0.2",
     "exiting": "6.1.0",
     "hapi-dev-errors": "4.0.0",
     "joi": "^17.0.0"

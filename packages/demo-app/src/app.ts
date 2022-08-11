@@ -1,4 +1,5 @@
 import Hapi from '@hapi/hapi'
+import Blipp from 'blipp'
 import hapi_dev_errors from 'hapi-dev-errors'
 import logger from '@jackdbd/hapi-logger-plugin'
 import {
@@ -36,6 +37,11 @@ export const app = async (config: Config) => {
     options: {
       showErrors: environment !== 'production'
     }
+  })
+
+  await server.register({
+    plugin: Blipp,
+    options: { showAuth: true, showScope: true, showStart: true }
   })
 
   server.register({
