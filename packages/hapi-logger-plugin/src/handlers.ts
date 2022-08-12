@@ -67,7 +67,7 @@ export const makeOnLog = ({
       tags: tagsWithSeverityTag(event),
       timestamp,
       channel
-    } as any)
+    })
   }
 }
 
@@ -112,6 +112,6 @@ export const makeOnRequest = ({
       timestamp,
       channel,
       request_id
-    } as any)
+    })
   }
 }
