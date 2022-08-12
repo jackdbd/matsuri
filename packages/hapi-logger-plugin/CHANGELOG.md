@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## @jackdbd/hapi-logger-plugin [1.0.0-canary.3](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-logger-plugin@1.0.0-canary.2...@jackdbd/hapi-logger-plugin@1.0.0-canary.3) (2022-08-12)
+
+
+### Bug Fixes
+
+* **hapi-logger-plugin:** upgrade tags-logger ([e01884c](https://github.com/jackdbd/matsuri/commit/e01884c7d38c30a9fe2dd988444105971f83614d))
+
 ## @jackdbd/hapi-logger-plugin [1.0.0-canary.2](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-logger-plugin@1.0.0-canary.1...@jackdbd/hapi-logger-plugin@1.0.0-canary.2) (2022-08-11)
 
 
