@@ -1,4 +1,4 @@
-# matsuri
+# matsuri ⛩️
 
 ![CI workflow](https://github.com/jackdbd/matsuri/actions/workflows/ci.yaml/badge.svg)
 ![release workflow](https://github.com/jackdbd/matsuri/actions/workflows/release.yaml/badge.svg)

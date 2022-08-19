@@ -1,18 +1,16 @@
 import type { Request, ResponseToolkit } from '@hapi/hapi'
 import Boom from '@hapi/boom'
 
-export const brokenGet = (config: any) => {
-  const { app_human_readable_name } = config
-
+export const errorGet = () => {
   const method = 'GET'
-  const path = '/broken'
+  const path = '/error'
 
   return {
     method,
     path,
     handler: async (request: Request, _h: ResponseToolkit) => {
-      request.log(['debug', 'broken', 'handler'], {
-        message: `${app_human_readable_name} got ${method} request at ${path}`
+      request.log(['error', 'handler'], {
+        message: `got ${method} request at ${path}`
       })
 
       const qs = request.query
@@ -67,13 +65,11 @@ export const brokenGet = (config: any) => {
           throw new Error(`this is route an internal error`)
         }
       }
-
-      return { message: 'broken' }
     },
     options: {
-      description: 'This is just a demo route that throws an exception',
+      description: 'This is a route that throws an exception',
       notes: `This demo route always throws an exception`,
-      tags: ['broken']
+      tags: ['error', 'handler']
     }
   }
 }
