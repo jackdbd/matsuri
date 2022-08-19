@@ -58,6 +58,8 @@ export const makeOnLog = ({
     const { channel, timestamp } = event
 
     let message = 'NO event.data (log event)'
+
+    // TODO: event.data might contain other stuff, not just message. Log this stuff!!!
     if (event.data) {
       message = (event.data as LogEventData).message || 'NO event.data.message'
     }
@@ -97,16 +99,13 @@ export const makeOnRequest = ({
     // `event.data`. I'm not sure whether I should log these events or not.
     // https://github.com/hapijs/podium/tree/master
 
-    let message = 'NO event.data (request event)'
-    if (event.data) {
-      message =
-        (event.data as RequestEventData).message || 'NO event.data.message'
-    }
+    const data = event.data || {}
+    const message =
+      (data as RequestEventData).message || 'NO event.data.message'
 
-    // I think that in order to avoid `any` tags-logger would need to use a
-    // generic like <T extends Statement>
     // https://stackoverflow.com/questions/66563466/allow-passing-a-function-with-extended-interface-as-parameter-in-react-typescr
     log({
+      ...data,
       message,
       tags: tagsWithSeverityTag(event),
       timestamp,
