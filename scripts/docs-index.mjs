@@ -14,9 +14,11 @@ const PACKAGES_EXCLUDED_FROM_INDEX = ['demo-app']
 const script_name = path.basename(__filename)
 
 const monorepo_root = process.env.PWD
+const repo_author = 'jackdbd'
+const repo_name = path.basename(monorepo_root)
 const output = path.join(monorepo_root, 'docs', 'README.md')
 
-const PREFIX = 'https://github.com/jackdbd/calderone/tree/main'
+const PREFIX = `https://github.com/${repo_author}/${repo_name}/tree/main`
 const API_DOCS_DIR = 'api-docs'
 
 const package_names = fs.readdirSync(path.join(monorepo_root, 'packages'))
