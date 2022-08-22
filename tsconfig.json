@@ -6,6 +6,9 @@
       "path": "./packages/hapi-request-event-predicates/tsconfig.json"
     },
     {
+      "path": "./packages/hapi-healthcheck-plugin/tsconfig.json"
+    },
+    {
       "path": "./packages/hapi-logger-plugin/tsconfig.json"
     },
     {
