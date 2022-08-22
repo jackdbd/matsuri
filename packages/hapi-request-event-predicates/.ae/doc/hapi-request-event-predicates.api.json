@@ -1,0 +1,680 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.29.3",
+    "schemaVersion": 1009,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "@jackdbd/hapi-request-event-predicates!",
+  "docComment": "/**\n * Functions that check whether a Hapi request event contains one or more of the following things:\n *\n * - errors - headers - tags\n *\n * @packageDocumentation\n */\n",
+  "name": "@jackdbd/hapi-request-event-predicates",
+  "preserveMemberOrder": false,
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@jackdbd/hapi-request-event-predicates!",
+      "name": "",
+      "preserveMemberOrder": false,
+      "members": [
+        {
+          "kind": "Variable",
+          "canonicalReference": "@jackdbd/hapi-request-event-predicates!hasRequestHeaderStripeSignature:var",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "hasRequestHeaderStripeSignature: "
+            },
+            {
+              "kind": "Content",
+              "text": "(request: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "Request",
+              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", _event: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "RequestEvent",
+              "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", _tags: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tags",
+              "canonicalReference": "@jackdbd/hapi-request-event-predicates!Tags:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => boolean"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "hasRequestHeaderStripeSignature",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@jackdbd/hapi-request-event-predicates!isClientRequestError:var",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "isClientRequestError: "
+            },
+            {
+              "kind": "Content",
+              "text": "(_request: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "Request",
+              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", event: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "RequestEvent",
+              "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", tags: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tags",
+              "canonicalReference": "@jackdbd/hapi-request-event-predicates!Tags:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => boolean"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "isClientRequestError",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@jackdbd/hapi-request-event-predicates!isForbiddenRequestError:var",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "isForbiddenRequestError: "
+            },
+            {
+              "kind": "Content",
+              "text": "(_request: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "Request",
+              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", event: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "RequestEvent",
+              "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", _tags: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tags",
+              "canonicalReference": "@jackdbd/hapi-request-event-predicates!Tags:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => boolean"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "isForbiddenRequestError",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@jackdbd/hapi-request-event-predicates!isNotFoundRequestError:var",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "isNotFoundRequestError: "
+            },
+            {
+              "kind": "Content",
+              "text": "(_request: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "Request",
+              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", event: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "RequestEvent",
+              "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", tags: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tags",
+              "canonicalReference": "@jackdbd/hapi-request-event-predicates!Tags:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => boolean"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "isNotFoundRequestError",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@jackdbd/hapi-request-event-predicates!isServerRequestError:var",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "isServerRequestError: "
+            },
+            {
+              "kind": "Content",
+              "text": "(_request: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "Request",
+              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", event: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "RequestEvent",
+              "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", tags: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tags",
+              "canonicalReference": "@jackdbd/hapi-request-event-predicates!Tags:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => boolean"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "isServerRequestError",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@jackdbd/hapi-request-event-predicates!isTeapotRequestError:var",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "isTeapotRequestError: "
+            },
+            {
+              "kind": "Content",
+              "text": "(_request: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "Request",
+              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", event: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "RequestEvent",
+              "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", _tags: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tags",
+              "canonicalReference": "@jackdbd/hapi-request-event-predicates!Tags:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => boolean"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "isTeapotRequestError",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@jackdbd/hapi-request-event-predicates!isUnauthorizedRequestError:var",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "isUnauthorizedRequestError: "
+            },
+            {
+              "kind": "Content",
+              "text": "(_request: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "Request",
+              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", event: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "RequestEvent",
+              "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", _tags: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tags",
+              "canonicalReference": "@jackdbd/hapi-request-event-predicates!Tags:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => boolean"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "isUnauthorizedRequestError",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@jackdbd/hapi-request-event-predicates!lacksRequestHeaderStripeSignature:var",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "lacksRequestHeaderStripeSignature: "
+            },
+            {
+              "kind": "Content",
+              "text": "(request: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "Request",
+              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", _event: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "RequestEvent",
+              "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", _tags: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tags",
+              "canonicalReference": "@jackdbd/hapi-request-event-predicates!Tags:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => boolean"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "lacksRequestHeaderStripeSignature",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@jackdbd/hapi-request-event-predicates!makeHasRequestHeader:var",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "makeHasRequestHeader: "
+            },
+            {
+              "kind": "Content",
+              "text": "(header_key: string) => (request: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "Request",
+              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", _event: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "RequestEvent",
+              "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", _tags: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tags",
+              "canonicalReference": "@jackdbd/hapi-request-event-predicates!Tags:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => boolean"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "makeHasRequestHeader",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@jackdbd/hapi-request-event-predicates!Tags:interface",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface Tags "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Tags",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "IndexSignature",
+              "canonicalReference": "@jackdbd/hapi-request-event-predicates!Tags:index(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "[tag: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "]: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "true"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "tag",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ]
+            }
+          ],
+          "extendsTokenRanges": []
+        }
+      ]
+    }
+  ]
+}

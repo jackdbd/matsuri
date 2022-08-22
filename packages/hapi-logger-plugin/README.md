@@ -5,6 +5,10 @@
 
 Hapi plugin that uses [tags-logger](https://www.npmjs.com/package/@jackdbd/tags-logger) for logging events emitted by [server.log()](https://hapi.dev/tutorials/logging/?lang=en_US#server.log) and [request.log()](https://hapi.dev/tutorials/logging/?lang=en_US#request.log).
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+</details>
+
 ## Installation
 
 ```sh
