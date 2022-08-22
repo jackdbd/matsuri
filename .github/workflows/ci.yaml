@@ -46,6 +46,9 @@ jobs:
       - name: 🔍 Test library @jackdbd/hapi-request-event-predicates
         run: npm run test:ci -w packages/hapi-request-event-predicates
 
+      - name: 🔍 Test library @jackdbd/hapi-healthcheck-plugin
+        run: npm run test:ci -w packages/hapi-healthcheck-plugin
+
       - name: 🔍 Test library @jackdbd/hapi-logger-plugin
         run: npm run test:ci -w packages/hapi-logger-plugin
       
