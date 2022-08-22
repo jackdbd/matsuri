@@ -1,8 +1,10 @@
 # @jackdbd/demo-app
 
-Hapi application to test and showcase the usage of several Hapi plugins.
+Hapi application to showcase the usage of several Hapi plugins.
 
-## Run the app
+## Development
+
+### Non-containerized application
 
 Start the application (development environment):
 
@@ -10,20 +12,36 @@ Start the application (development environment):
 npm run start:development -w packages/demo-app
 ```
 
-Note: no need to build the app because I am using [tsm](https://github.com/lukeed/tsm).
+*Note*: no need to build the app because I am using [tsm](https://github.com/lukeed/tsm).
+
+### Containerized application
+
+Build the container image:
+
+```sh
+npm run container:build -w packages/demo-app
+```
+
+Start the application:
+
+```sh
+npm run container:run:development -w packages/demo-app
+```
+
+## Deploy
+
+Deploy the application as a Cloud Run service:
+
+```sh
+npm run deploy -w packages/demo-app
+```
+
+## Usage (TODO)
 
 Make requests to the app:
 
 ```sh
-curl -X GET http://localhost:8080/hello
-
-curl -X GET http://localhost:8080/broken?error=internal
-
-curl -X GET http://localhost:8080/broken?error=method-not-allowed
-
-curl -X GET http://localhost:8080/broken?error=not-accetable
-
-curl -X GET http://localhost:8080/broken?error=not-found
-
-curl -X GET http://localhost:8080/broken?error=not-implemented
+curl -X GET \
+  -L "$DEMO_APP_URL/protected" \
+  -i
 ```

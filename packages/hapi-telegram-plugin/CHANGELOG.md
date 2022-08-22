@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## @jackdbd/hapi-telegram-plugin [2.0.0-canary.2](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@2.0.0-canary.1...@jackdbd/hapi-telegram-plugin@2.0.0-canary.2) (2022-08-22)
+
+
+### Bug Fixes
+
+* **hapi-telegram-plugin:** export interfaces ([21507b7](https://github.com/jackdbd/matsuri/commit/21507b7416919ee037221b29eeb41d8002b82787))
+
+## @jackdbd/hapi-telegram-plugin [2.0.0-canary.1](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@1.1.0-canary.2...@jackdbd/hapi-telegram-plugin@2.0.0-canary.1) (2022-08-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **hapi-telegram-plugin:** the options passed to the `register` function are
+completely different. They now require only the `field request_event_matchers`.
+
+### Features
+
+* **hapi-telegram-plugin:** new plugin API ([d1bccff](https://github.com/jackdbd/matsuri/commit/d1bccff7ae8d081c839a5d57e0ec75b9aa654366))
+
+## @jackdbd/hapi-telegram-plugin [1.1.0-canary.2](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@1.1.0-canary.1...@jackdbd/hapi-telegram-plugin@1.1.0-canary.2) (2022-07-27)
+
+## @jackdbd/hapi-telegram-plugin [1.1.0-canary.1](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@1.0.0...@jackdbd/hapi-telegram-plugin@1.1.0-canary.1) (2022-07-11)
+
+
+### Features
+
+* **hapi-telegram-plugin:** update README ([46b3e89](https://github.com/jackdbd/matsuri/commit/46b3e8960c0d210bd7cdedf54bf240bea3933cd7))
+
 ## @jackdbd/hapi-telegram-plugin 1.0.0 (2022-07-11)
 
 

@@ -63,9 +63,9 @@ const commit_analyzer = [
 
     // https://github.com/semantic-release/commit-analyzer#releaserules
     releaseRules: [
-      // In my opinion, updating the documentation of this monorepo should not
-      // trigger a release, but updating the documentation of a library of this
-      // monorepo certainly should.
+      // In my opinion, updating the documentation of the root package of this
+      // monorepo should not trigger a release, but updating the documentation
+      // of a library of this monorepo certainly should.
       { type: 'docs', scope: 'hapi-*', release: 'patch' },
       // Maybe a refactor should trigger a release. I am not 100% convinced though.
       { type: 'refactor', release: 'patch' }

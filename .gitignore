@@ -11,6 +11,10 @@ secrets/*
 # test coverage
 **/coverage/
 
+# Typescript type definitions copied to each package root (I keep them in the
+# monorepo root, and must copy them when building a container image).
+packages/**/custom-types/
+
 # Typescript compilation output files for libraries and applications
 packages/**/lib/
 packages/**/dist/

@@ -1,9 +1,19 @@
-export interface Config {
-  app_human_readable_name: string
-  app_technical_name: string
-  app_version: string
-  environment: string
-  port: number | string
-  telegram_chat_id: number | string
-  telegram_token: string
+export interface OAuthApp {
+  client_id: string
+  client_secret: string
+}
+
+export interface TelegramCredentials {
+  chat_id: string
+  token: string
+}
+
+export interface Session {
+  github_id: number
+  github_username: string
+}
+
+export interface AppConfig {
+  session_cookie_password: string
+  bell_cookie_password: string
 }

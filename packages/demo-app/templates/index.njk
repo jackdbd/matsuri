@@ -1,0 +1,16 @@
+{% extends "layouts/page.njk" %}
+
+{% block content %}
+<div>
+  <h1>{{ title }}</h1>
+  <p>{{ description }}</p>
+  
+  <a href="/auth/github" rel="noreferrer" class="nes-btn is-success">Authenticate with GitHub</a>
+
+  <a href="/auth/google" rel="noreferrer" class="nes-btn is-success">Authenticate with Google</a>
+
+  <a href="/protected" class="nes-btn">Go to a protected route</a>
+
+  <p><a href="/logout" class="nes-btn is-warning">Logout</a></p>
+</div>
+{% endblock %}

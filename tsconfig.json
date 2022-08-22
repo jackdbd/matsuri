@@ -1,8 +1,16 @@
 {
   "extends": "./config/tsconfig.base.json",
   "files": [],
-  // IMPORTANT: do NOT change the order
   "references": [
+    {
+      "path": "./packages/hapi-request-event-predicates/tsconfig.json"
+    },
+    {
+      "path": "./packages/hapi-healthcheck-plugin/tsconfig.json"
+    },
+    {
+      "path": "./packages/hapi-logger-plugin/tsconfig.json"
+    },
     {
       "path": "./packages/hapi-telegram-plugin/tsconfig.json"
     }

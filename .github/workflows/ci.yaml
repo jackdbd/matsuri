@@ -4,6 +4,7 @@ on:
   pull_request:
   push:
     branches:
+      - canary
       - main
 
 jobs:
@@ -13,7 +14,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: ['16.15.1']
+        node: ['18.3.0']
     steps:
       - name: 🛎️ Checkout repo
         uses: actions/checkout@v3
@@ -32,12 +33,26 @@ jobs:
       - name: 🔧 Build all libraries
         run: npm run build
 
-      - name: 🛡️ Audit security
+      - name: 🛡️ Audit security (audit-level high)
+        # https://docs.npmjs.com/cli/v8/commands/npm-audit#audit-level
+        if: ${{ matrix.os }} == 'ubuntu-latest'
+        run: npm audit --audit-level high
+
+      - name: 🛡️ Audit security (audit-level moderate)
         continue-on-error: true
         if: ${{ matrix.os }} == 'ubuntu-latest'
-        run: npm audit --audit-level=moderate
+        run: npm audit --audit-level moderate
 
-      - name: 🔍 Test all libraries
+      - name: 🔍 Test library @jackdbd/hapi-request-event-predicates
+        run: npm run test:ci -w packages/hapi-request-event-predicates
+
+      - name: 🔍 Test library @jackdbd/hapi-healthcheck-plugin
+        run: npm run test:ci -w packages/hapi-healthcheck-plugin
+
+      - name: 🔍 Test library @jackdbd/hapi-logger-plugin
+        run: npm run test:ci -w packages/hapi-logger-plugin
+      
+      - name: 🔍 Test library @jackdbd/hapi-telegram-plugin
         env:
           TELEGRAM: ${{ secrets.TELEGRAM }}
-        run: npm run test:ci
+        run: npm run test:ci -w packages/hapi-telegram-plugin

@@ -1,0 +1,82 @@
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@jackdbd/hapi-logger-plugin</title><meta name="description" content="Documentation for @jackdbd/hapi-logger-plugin"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@jackdbd/hapi-logger-plugin</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>@jackdbd/hapi-logger-plugin </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#jackdbdhapi-logger-plugin" id="jackdbdhapi-logger-plugin" style="color: inherit; text-decoration: none;">
+  <h1>@jackdbd/hapi-logger-plugin</h1>
+</a>
+<p><a href="https://badge.fury.io/js/@jackdbd%2Fhapi-logger-plugin"><img src="https://badge.fury.io/js/@jackdbd%2Fhapi-logger-plugin.svg" alt="npm version"></a>
+<img src="https://img.shields.io/snyk/vulnerabilities/npm/@jackdbd%2Fhapi-logger-plugin" alt="Snyk Vulnerabilities for npm package"></p>
+<p>Hapi plugin that uses <a href="https://www.npmjs.com/package/@jackdbd/tags-logger">tags-logger</a> for logging events emitted by <a href="https://hapi.dev/tutorials/logging/?lang=en_US#server.log">server.log()</a> and <a href="https://hapi.dev/tutorials/logging/?lang=en_US#request.log">request.log()</a>.</p>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+</details>
+
+
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
+</a>
+<pre><code class="language-sh"><span class="hl-0">npm install @jackdbd/hapi-logger-plugin</span>
+</code></pre>
+
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h2>Usage</h2>
+</a>
+
+<a href="#structured-logging" id="structured-logging" style="color: inherit; text-decoration: none;">
+  <h3>structured logging</h3>
+</a>
+<pre><code class="language-ts"><span class="hl-1">import</span><span class="hl-0"> </span><span class="hl-2">logger</span><span class="hl-0"> </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;@jackdbd/hapi-logger-plugin&#39;</span><br/><br/><span class="hl-1">export</span><span class="hl-0"> </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">app</span><span class="hl-0"> = </span><span class="hl-4">async</span><span class="hl-0"> (</span><span class="hl-2">config</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><br/><span class="hl-0">  </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-6">server</span><span class="hl-0"> = </span><span class="hl-2">Hapi</span><span class="hl-0">.</span><span class="hl-5">server</span><span class="hl-0">({ </span><span class="hl-2">port:</span><span class="hl-0"> </span><span class="hl-7">8080</span><span class="hl-0"> })</span><br/><br/><span class="hl-0">  </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">server</span><span class="hl-0">.</span><span class="hl-5">register</span><span class="hl-0">({ </span><span class="hl-2">plugin:</span><span class="hl-0"> </span><span class="hl-2">logger</span><span class="hl-0"> })</span><br/><br/><span class="hl-0">  </span><span class="hl-1">return</span><span class="hl-0"> { </span><span class="hl-2">server</span><span class="hl-0"> }</span><br/><span class="hl-0">}</span>
+</code></pre>
+
+<a href="#unstructured-logging" id="unstructured-logging" style="color: inherit; text-decoration: none;">
+  <h3>unstructured logging</h3>
+</a>
+<pre><code class="language-ts"><span class="hl-1">import</span><span class="hl-0"> </span><span class="hl-2">logger</span><span class="hl-0"> </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;@jackdbd/hapi-logger-plugin&#39;</span><br/><br/><span class="hl-1">export</span><span class="hl-0"> </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">app</span><span class="hl-0"> = </span><span class="hl-4">async</span><span class="hl-0"> (</span><span class="hl-2">config</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><br/><span class="hl-0">  </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-6">server</span><span class="hl-0"> = </span><span class="hl-2">Hapi</span><span class="hl-0">.</span><span class="hl-5">server</span><span class="hl-0">({ </span><span class="hl-2">port:</span><span class="hl-0"> </span><span class="hl-7">8080</span><span class="hl-0"> })</span><br/><br/><span class="hl-0">  </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">server</span><span class="hl-0">.</span><span class="hl-5">register</span><span class="hl-0">({</span><br/><span class="hl-0">    </span><span class="hl-2">plugin:</span><span class="hl-0"> </span><span class="hl-2">logger</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">options:</span><span class="hl-0"> {</span><br/><span class="hl-0">      </span><span class="hl-2">namespace:</span><span class="hl-0"> </span><span class="hl-3">&#39;my-app&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">should_use_emoji_for_severity:</span><span class="hl-0"> </span><span class="hl-4">false</span><br/><span class="hl-0">    }</span><br/><span class="hl-0">  })</span><br/><br/><span class="hl-0">  </span><span class="hl-1">return</span><span class="hl-0"> { </span><span class="hl-2">server</span><span class="hl-0"> }</span><br/><span class="hl-0">}</span>
+</code></pre>
+
+<a href="#configuration" id="configuration" style="color: inherit; text-decoration: none;">
+  <h2>Configuration</h2>
+</a>
+
+<a href="#environment-variables" id="environment-variables" style="color: inherit; text-decoration: none;">
+  <h3>Environment variables</h3>
+</a>
+<table>
+<thead>
+<tr>
+<th>Environment variable</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>DEBUG</code></td>
+<td>You must set this environment variable if you want to use unstructured logging and see some output. For example, if you set <code>namespace: &#39;my-app&#39;</code>, Hapi <a href="https://hapi.dev/tutorials/logging/?lang=en_US#server.log">server.log()</a> events will be logged to the <code>my-app/log-event</code> namespace, and Hapi <a href="https://hapi.dev/tutorials/logging/?lang=en_US#request.log">request.log()</a> events will be logged to the <code>my-app/request-event</code> namespace. So, for example, <code>DEBUG=my-app/*</code> will log all events, while <code>DEBUG=my-app/request-event</code> or <code>DEBUG=my-app/*,-my-app/log-event</code> will log only the <code>request.log()</code> events.</td>
+</tr>
+</tbody></table>
+
+<a href="#options" id="options" style="color: inherit; text-decoration: none;">
+  <h3>Options</h3>
+</a>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>namespace</code></td>
+<td><code>undefined</code></td>
+<td>The namespace for unstructured logging. This option has no effect when using structured logging.</td>
+</tr>
+<tr>
+<td><code>should_use_emoji_for_severity</code></td>
+<td><code>true</code></td>
+<td>Whether to use an emoji for the severity level, when using unstructured logging. This option has no effect when using structured logging.</td>
+</tr>
+<tr>
+<td><code>should_validate_log_statements</code></td>
+<td><code>true</code></td>
+<td>Whether each log statement should be validated against a <a href="https://github.com/sideway/joi">Joi</a> schema.</td>
+</tr>
+</tbody></table>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-variable"><a href="modules.html#default" class="tsd-kind-icon">default</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>

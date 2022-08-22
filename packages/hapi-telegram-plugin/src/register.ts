@@ -1,37 +1,81 @@
-import Joi from 'joi'
 import type Hapi from '@hapi/hapi'
 import Hoek from '@hapi/hoek'
 import {
-  app_human_readable_name,
-  app_technical_name,
-  app_version,
-  telegram_chat_id,
-  telegram_token
-} from './schemas.js'
-import { makeRequestHandler } from './handlers.js'
-import type { Options } from './handlers.js'
+  isServerRequestError,
+  isUnauthorizedRequestError
+} from '@jackdbd/hapi-request-event-predicates'
+import { TAG } from './constants.js'
+import { options as schema } from './schemas.js'
+import { makeHandleRequest } from './handlers.js'
+import type { Options, RequestEventMatcher } from './interfaces.js'
+import { serverError, unauthorized } from './texts.js'
 
-const internals = {
-  schema: Joi.object().keys({
-    app_human_readable_name: app_human_readable_name.default('My App'),
-    app_technical_name: app_technical_name.default('my-cloud-run-service-id'),
-    app_version: app_version.default('latest'),
-    chat_id: telegram_chat_id.required(),
-    token: telegram_token.required()
-  })
+const telegramCredentialsFromEnvironment = () => {
+  if (!process.env.TELEGRAM_CHAT_ID) {
+    throw new Error(`TELEGRAM_CHAT_ID not set`)
+  }
+  const chat_id = process.env.TELEGRAM_CHAT_ID
+
+  if (!process.env.TELEGRAM_BOT_TOKEN) {
+    throw new Error(`TELEGRAM_BOT_TOKEN not set`)
+  }
+  const token = process.env.TELEGRAM_BOT_TOKEN
+
+  return { chat_id, token }
+}
+
+const defaultRequestEventMatchers = (): RequestEventMatcher[] => {
+  const { chat_id, token } = telegramCredentialsFromEnvironment()
+
+  return [
+    {
+      name: 'notify of server errors',
+      chat_id,
+      token,
+      predicate: isServerRequestError,
+      text: serverError
+    },
+    {
+      name: 'warn about HTTP 401 (Unauthorized) request errors',
+      chat_id,
+      token,
+      predicate: isUnauthorizedRequestError,
+      text: unauthorized
+    }
+  ]
 }
 
 export const register = (server: Hapi.Server, options?: Options) => {
-  const result = internals.schema.validate(options)
+  // consider using Hoek.merge() or Hoek.applyToDefaults()
+  // https://hapi.dev/module/hoek/api/?v=10.0.0#mergetarget-source-options
+  // https://hapi.dev/module/hoek/api/?v=10.0.0#applytodefaultsdefaults-source-options
+  let config: Required<Options>
+  if (options) {
+    if (options.request_event_matchers) {
+      config = {
+        ...options,
+        request_event_matchers: options.request_event_matchers
+      }
+    } else {
+      config = {
+        ...options,
+        request_event_matchers: defaultRequestEventMatchers()
+      }
+    }
+  } else {
+    config = {
+      request_event_matchers: defaultRequestEventMatchers()
+    }
+  }
+
+  const result = schema.validate(config)
   Hoek.assert(!result.error, result.error && result.error.annotate())
 
-  const config = { ...result.value, server }
+  const handleRequest = makeHandleRequest({ ...config, server })
 
-  server.events.on('request', makeRequestHandler(config))
-  // in alternative, I think I could also do something like this
-  // https://github.com/hapijs/scooter/blob/master/lib/index.js
+  server.events.on('request', handleRequest)
 
-  server.log(['lifecycle'], {
+  server.log(['lifecycle', 'plugin', 'telegram', TAG], {
     message: `Hapi server registered the Telegram plugin.`
   })
 }

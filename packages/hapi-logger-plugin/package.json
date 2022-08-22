@@ -1,0 +1,74 @@
+{
+  "name": "@jackdbd/hapi-logger-plugin",
+  "version": "1.0.0-canary.4",
+  "description": "Hapi plugin for a JSON logger",
+  "author": {
+    "name": "Giacomo Debidda",
+    "email": "giacomo@giacomodebidda.com",
+    "url": "https://giacomodebidda.com/"
+  },
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "hapi",
+    "logger",
+    "plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackdbd/matsuri"
+  },
+  "homepage": "https://github.com/jackdbd/matsuri/tree/main/packages/hapi-logger-plugin#readme",
+  "engines": {
+    "node": ">=14.19.3"
+  },
+  "type": "module",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./lib/*.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "api-docs",
+    "lib"
+  ],
+  "scripts": {
+    "build": "run-s 'build:ts' 'build:docs' --print-label",
+    "build:docs": "run-s 'docs:doctoc' 'docs:ae' 'docs:ad' 'docs:typedoc' --print-label",
+    "build:ts": "tsc -p tsconfig.json",
+    "clean": "rimraf lib/ tsconfig.tsbuildinfo",
+    "docs:ae": "../../scripts/api-extractor.mjs",
+    "docs:ad": "../../scripts/api-documenter.mjs",
+    "docs:doctoc": "doctoc --github README.md --title '<details><summary>Table of Contents</summary>'",
+    "docs:typedoc": "../../scripts/typedoc.mjs",
+    "format": "../../scripts/format.mjs",
+    "lint": "eslint --config ../../config/eslint.cjs",
+    "nuke": "npm run clean && rimraf node_modules 'package-lock.json'",
+    "precommit": "lint-staged --config ../../config/lint-staged.cjs",
+    "size": "pkg-size ./lib --sort-by=brotli --ignore-files {*.d.ts,*.map}",
+    "test": "../../scripts/test.mjs",
+    "test:ci": "../../scripts/test.mjs --ci",
+    "test:watch": "run-p \"build:ts -- --watch\" \"test -- --watch\""
+  },
+  "dependencies": {
+    "@jackdbd/tags-logger": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@hapi/hapi": ">=20.0.0"
+  },
+  "devDependencies": {}
+}

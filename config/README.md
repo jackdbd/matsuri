@@ -2,6 +2,7 @@
 
 Config files for building, testing, linting, formatting all packages in this monorepo.
 
+- `api-extractor.json`: configuration  for [api-extractor](https://api-extractor.com/pages/configs/api-extractor_json/).
 - `commitlint.cjs`: configuration for [commitlint](https://github.com/conventional-changelog/commitlint), to enforce [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
 - `eslint.cjs`: configuration for [ESLint](https://eslint.org/).
 - `jest.cjs`: configuration for all `*.test.mjs` files. Use it with Jest [experimental support for ECMAScript Modules (ESM)](https://jestjs.io/docs/ecmascript-modules).

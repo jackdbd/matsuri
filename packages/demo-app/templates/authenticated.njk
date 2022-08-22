@@ -1,0 +1,12 @@
+{% extends "layouts/page.njk" %}
+
+{% block content %}
+<div>
+  <h1>Signed in with {{ provider }}</h1>
+  <img src="{{ avatar }}" alt="Avatar" width="75">
+  <p>Hi {{ username }}, great to see you!</p>
+  
+  <a href="/logout" class="nes-btn is-warning">Logout</a>
+  <a href="/" class="nes-btn is-info">Back to home</a>
+</div>
+{% endblock %}
