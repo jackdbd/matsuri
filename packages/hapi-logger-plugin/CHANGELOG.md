@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## @jackdbd/hapi-logger-plugin [1.0.0-canary.4](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-logger-plugin@1.0.0-canary.3...@jackdbd/hapi-logger-plugin@1.0.0-canary.4) (2022-08-22)
+
+
+### Bug Fixes
+
+* **hapi-logger-plugin:** log stuff contained in event.data ([7ad8f1f](https://github.com/jackdbd/matsuri/commit/7ad8f1f6498523a062663c1525d2a18eeb89edf2))
+
 ## @jackdbd/hapi-logger-plugin [1.0.0-canary.3](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-logger-plugin@1.0.0-canary.2...@jackdbd/hapi-logger-plugin@1.0.0-canary.3) (2022-08-12)
 
 
