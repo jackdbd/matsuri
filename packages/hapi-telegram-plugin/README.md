@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/@jackdbd%2Fhapi-telegram-plugin.svg)](https://badge.fury.io/js/@jackdbd%2Fhapi-telegram-plugin)
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/@jackdbd%2Fhapi-telegram-plugin)
 
-Hapi plugin that reports error messages to a Telegram chat of your choice.
+Hapi plugin that sends a message to a Telegram chat when a request matches one of the rules you defined.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -44,10 +44,28 @@ See also the ufficial Telegram documentation:
 
 ## Usage
 
-Let's say that you want to receive notifications for errors in the request handlers of the `latest` version of your app `Awesome App` (technical name `awesome-app-sha-1234356`) in a Telegram chat. You would configure the plugin like this:
+Let's say that you want to receive notifications for server errors (i.e. HTTP 5xx), and notifications for unauthorized errors (i.e. HTTP 401). You would configure the plugin like this:
 
 ```js
 import telegram from '@jackdbd/hapi-telegram-plugin'
+import type {
+  Options as TelegramPluginOptions
+} from '@jackdbd/hapi-telegram-plugin'
+
+// define your request predicates somewhere in your app,
+// or import them from a library.
+import {
+  isServerRequestError,
+  isUnauthorizedRequestError
+} from '@jackdbd/hapi-request-event-predicates'
+
+// define the functions that create the text string to
+// send to Telegram, or import them from a library.
+import {
+  serverError,
+  unauthorized
+} from '@jackdbd/hapi-telegram-plugin/texts'
+
 
 export const app = async (config) => {
 
@@ -57,16 +75,29 @@ export const app = async (config) => {
     message: `HTTP server created.`
   })
 
-  await server.register({
-    plugin: telegram,
-    options: {
-      app_human_readable_name: 'Awesome App',
-      app_technical_name: 'awesome-app-sha-1234356',
-      app_version: 'latest',
-      chat_id: 'YOUR-TELEGRAM-CHAT-ID',
-      token: 'YOUR-TELEGRAM-BOT-TOKEN'
-    }
-  })
+  const options: TelegramPluginOptions = {
+    // when a request to your Hapi app matches a rule, this plugin
+    // sends a message to the Telegram chat specified in that
+    // particular rule.
+    request_event_matchers: [
+      {
+        name: 'notify of server errors',
+        chat_id: 'YOUR-TELEGRAM-CHAT-ID',
+        token: 'YOUR-TELEGRAM-BOT-TOKEN',
+        predicate: isServerRequestError,
+        text: serverError
+      },
+      {
+        name: 'warn about HTTP 401 (Unauthorized) request errors',
+        chat_id: 'YOUR-TELEGRAM-CHAT-ID',
+        token: 'YOUR-TELEGRAM-BOT-TOKEN',
+        predicate: isUnauthorizedRequestError,
+        text: unauthorized
+      }
+    ]
+  }
+
+  await server.register({ plugin: telegram, options })
 
   server.log(['lifecycle', 'plugin'], {
     message: `Telegram plugin registered.`
@@ -78,17 +109,8 @@ export const app = async (config) => {
 
 ## Configuration
 
-### Required parameters
-
-| Parameter | Explanation |
-| --- | --- |
-| `chat_id` | The Telegram chat ID where this plugin should send messages to. It's the chat you have with your Telegram bot. |
-| `token` | The Telegram bot token. |
-
 ### Options
 
 | Option | Default | Explanation |
 | --- | --- | --- |
-| `app_human_readable_name` | `My App` | A human friendly name for your Hapi app. |
-| `app_technical_name` | `my-cloud-run-service-id` | A machine friendly name for your Hapi app. |
-| `app_version` | `latest` | The version of your Hapi app. |
+| `request_event_matchers` | see `defaultRequestEventMatchers()` in [register.ts](./src/register.ts) | Each rule controls which request matches, and to which Telegram chat the text should be sent. |

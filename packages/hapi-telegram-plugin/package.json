@@ -63,14 +63,14 @@
     "nuke": "npm run clean && rimraf node_modules 'package-lock.json'",
     "precommit": "lint-staged --config ../../config/lint-staged.cjs",
     "size": "pkg-size ./lib --sort-by=brotli --ignore-files {*.d.ts,*.map}",
-    "test": "../../scripts/test.mjs",
+    "test": "../../scripts/test.mjs -- --runInBand --detectOpenHandles",
     "test:ci": "../../scripts/test.mjs --ci",
     "test:watch": "run-p \"build:ts -- --watch\" \"test -- --watch\""
   },
   "dependencies": {
-    "@jackdbd/notifications": "1.0.3",
-    "@jackdbd/hapi-request-event-predicates": "1.0.0",
-    "@jackdbd/telegram-text-messages": "1.0.2"
+    "@jackdbd/notifications": "^1.0.3",
+    "@jackdbd/hapi-request-event-predicates": "^1.0.0",
+    "@jackdbd/telegram-text-messages": "^1.1.0"
   },
   "peerDependencies": {
     "@hapi/hapi": ">=20.0.0",
