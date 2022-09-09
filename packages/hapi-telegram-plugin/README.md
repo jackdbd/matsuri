@@ -5,6 +5,23 @@
 
 Hapi plugin that sends a message to a Telegram chat when a request matches one of the rules you defined.
 
+You define request rules like this one:
+
+```ts
+{
+  name: 'notify me of any server error (e.g. internal server error)',
+  chat_id: 'YOUR-TELEGRAM-CHAT-ID',
+  token: 'YOUR-TELEGRAM-BOT-TOKEN',
+  predicate: isServerRequestError,
+  text: serverError
+}
+```
+
+...and this plugin sends a Telegram message like this one:
+
+![Telegram message about an internal server error in your Hapi app](../../assets/images/hapi-telegram-plugin-internal-server-error.png)
+
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 </details>
