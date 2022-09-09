@@ -23,22 +23,45 @@ export default _default;
 
 // @public (undocumented)
 export interface Options {
-    // Warning: (ae-forgotten-export) The symbol "RequestEventMatcher" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     request_event_matchers?: RequestEventMatcher[];
 }
 
-// Warning: (ae-forgotten-export) The symbol "Tags" needs to be exported by the entry point index.d.ts
+// @public
+export interface RequestEventMatcher {
+    // (undocumented)
+    chat_id: TelegramChatId;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    predicate: (request: Hapi.Request, event: Hapi.RequestEvent, tags: Tags) => boolean;
+    // (undocumented)
+    text: (request: Hapi.Request, event: Hapi.RequestEvent, tags: Tags) => string;
+    // (undocumented)
+    token: TelegramToken;
+}
+
 // Warning: (ae-missing-release-tag) "serverError" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
 export const serverError: (request: Hapi.Request, event: Hapi.RequestEvent, _tags: Tags) => string;
 
+// @public (undocumented)
+export interface Tags {
+    // (undocumented)
+    [tag: string]: true;
+}
+
 // Warning: (ae-missing-release-tag) "teapot" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
 export const teapot: (request: Hapi.Request, event: Hapi.RequestEvent, _tags: Tags) => string;
+
+// @public (undocumented)
+export type TelegramChatId = number | string;
+
+// @public (undocumented)
+export type TelegramToken = string;
 
 // Warning: (ae-missing-release-tag) "unauthorized" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //

@@ -9,6 +9,8 @@
 |  Interface | Description |
 |  --- | --- |
 |  [Options](./hapi-telegram-plugin.options.md) |  |
+|  [RequestEventMatcher](./hapi-telegram-plugin.requesteventmatcher.md) | <p>Rule that controls which request matches, and to which Telegram chat the text should be sent.</p><p>The rule <code>predicate</code> determines whether a request matches or not.</p><p>The rule <code>text</code> converts the combination request and event into a text to send to Telegram. This text should respect the formatting options and length allowed by the sendMessage endpoint of the Telegram API.</p> |
+|  [Tags](./hapi-telegram-plugin.tags.md) |  |
 
 ## Variables
 
@@ -18,4 +20,11 @@
 |  [serverError](./hapi-telegram-plugin.servererror.md) |  |
 |  [teapot](./hapi-telegram-plugin.teapot.md) |  |
 |  [unauthorized](./hapi-telegram-plugin.unauthorized.md) |  |
+
+## Type Aliases
+
+|  Type Alias | Description |
+|  --- | --- |
+|  [TelegramChatId](./hapi-telegram-plugin.telegramchatid.md) |  |
+|  [TelegramToken](./hapi-telegram-plugin.telegramtoken.md) |  |
 

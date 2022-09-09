@@ -15,5 +15,5 @@ export interface Options
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [request\_event\_matchers?](./hapi-telegram-plugin.options.request_event_matchers.md) |  | RequestEventMatcher\[\] | <i>(Optional)</i> |
+|  [request\_event\_matchers?](./hapi-telegram-plugin.options.request_event_matchers.md) |  | [RequestEventMatcher](./hapi-telegram-plugin.requesteventmatcher.md)<!-- -->\[\] | <i>(Optional)</i> |
 

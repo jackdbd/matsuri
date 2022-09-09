@@ -19,7 +19,7 @@ You define request rules like this one:
 
 ...and this plugin sends a Telegram message like this one:
 
-![Telegram message about an internal server error in your Hapi app](../../assets/images/hapi-telegram-plugin-internal-server-error.png)
+![Telegram message about an internal server error in your Hapi app](https://github.com/jackdbd/matsuri/blob/e295034b8eaf3a9dc83cd9ef6641fa84eb23bcea/assets/images/hapi-telegram-plugin-internal-server-error.png?raw=true)
 
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
