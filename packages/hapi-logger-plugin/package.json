@@ -65,7 +65,7 @@
     "test:watch": "run-p \"build:ts -- --watch\" \"test -- --watch\""
   },
   "dependencies": {
-    "@jackdbd/tags-logger": "^1.0.0"
+    "@jackdbd/tags-logger": "^1.1.0"
   },
   "peerDependencies": {
     "@hapi/hapi": ">=20.0.0"
