@@ -1,6 +1,6 @@
 {
   "name": "@jackdbd/hapi-telegram-plugin",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Hapi plugin for Telegram",
   "author": {
     "name": "Giacomo Debidda",

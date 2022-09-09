@@ -1,5 +1,7 @@
 # CHANGELOG
 
+## @jackdbd/hapi-telegram-plugin [2.1.1](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@2.1.0...@jackdbd/hapi-telegram-plugin@2.1.1) (2022-09-09)
+
 ## @jackdbd/hapi-telegram-plugin [2.1.0](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@2.0.0...@jackdbd/hapi-telegram-plugin@2.1.0) (2022-09-09)
 
 
