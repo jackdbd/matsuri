@@ -44,8 +44,36 @@ export const app = async (config) => {
   await server.register({
     plugin: logger,
     options: {
-      namespace: 'my-app',
-      should_use_emoji_for_severity: false
+      namespace: 'my-app'
+    }
+  })
+
+  return { server }
+}
+```
+
+### example: Cloud Run service
+
+You likely want to use unstructured logging when the code is running on Cloud Run, and unstructured logging when it's running locally (regardless whether it a containerized Node.js app or a containerized one).
+
+Also, you might want to validate the log statements only in development.
+
+Here is a configuration you might try:
+
+```ts
+import logger from '@jackdbd/hapi-logger-plugin'
+
+export const app = async (config) => {
+
+  const server = Hapi.server({ port: 8080 })
+
+  await server.register({
+    plugin: logger,
+    options: {
+      // when the code runs as a Cloud Run service, don't set `namespace`
+      namespace: process.env.K_SERVICE ? undefined : 'my-app',
+      // when in production, don't validate log statements
+      should_validate_log_statements: process.env.NODE_ENV === 'production' ? false : true
     }
   })
 
