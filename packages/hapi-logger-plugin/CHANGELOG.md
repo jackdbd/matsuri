@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## @jackdbd/hapi-logger-plugin [1.1.0-canary.1](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-logger-plugin@1.0.0...@jackdbd/hapi-logger-plugin@1.1.0-canary.1) (2022-09-09)
+
+
+### Features
+
+* **hapi-logger-plugin:** upgrade dependencies and update README ([c2548a8](https://github.com/jackdbd/matsuri/commit/c2548a8761ea460b169200d1e2120e0be9594b71))
+
 ## @jackdbd/hapi-logger-plugin 1.0.0 (2022-08-22)
 
 
