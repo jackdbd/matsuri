@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## @jackdbd/hapi-logger-plugin [1.1.1](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-logger-plugin@1.1.0...@jackdbd/hapi-logger-plugin@1.1.1) (2022-09-14)
+
+
+### Bug Fixes
+
+* **hapi-logger-plugin:** log additional data in request event.data ([77ab065](https://github.com/jackdbd/matsuri/commit/77ab0653a37d55dd0bafa0b9d9d020702a3fbbbe))
+
 ## @jackdbd/hapi-logger-plugin [1.1.1-canary.1](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-logger-plugin@1.1.0...@jackdbd/hapi-logger-plugin@1.1.1-canary.1) (2022-09-14)
 
 
