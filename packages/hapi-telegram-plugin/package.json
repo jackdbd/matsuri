@@ -1,6 +1,6 @@
 {
   "name": "@jackdbd/hapi-telegram-plugin",
-  "version": "2.1.1",
+  "version": "2.2.0-canary.1",
   "description": "Hapi plugin for Telegram",
   "author": {
     "name": "Giacomo Debidda",
@@ -69,7 +69,7 @@
   },
   "dependencies": {
     "@jackdbd/notifications": "^1.0.3",
-    "@jackdbd/hapi-request-event-predicates": "1.0.0",
+    "@jackdbd/hapi-request-event-predicates": "1.1.0-canary.1",
     "@jackdbd/telegram-text-messages": "^1.1.0"
   },
   "peerDependencies": {
