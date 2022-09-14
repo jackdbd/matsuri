@@ -42,7 +42,7 @@
     "nuke": "npm run clean && rimraf node_modules 'package-lock.json'",
     "precommit": "lint-staged --config ../../config/lint-staged.cjs",
     "size": "pkg-size ./dist --sort-by=brotli --ignore-files {*.d.ts,*.map}",
-    "start:development": "APP_CONFIG=$(cat ../../secrets/demo-app-config-development.json) GITHUB_OAUTH_APP=$(cat ../../secrets/github-oauth-app.json) GOOGLE_OAUTH_APP=$(cat ../../secrets/google-oauth-app.json) NODE_ENV=development TELEGRAM=$(cat ../../secrets/telegram.json) TWITTER_APP=$(cat ../../secrets/twitter-oauth-app.json) tsm ./src/main.ts"
+    "start:development": "APP_CONFIG=$(cat ../../secrets/demo-app-config-development.json) DEBUG=demo-app* GITHUB_OAUTH_APP=$(cat ../../secrets/github-oauth-app.json) GOOGLE_OAUTH_APP=$(cat ../../secrets/google-oauth-app.json) NODE_ENV=development TELEGRAM=$(cat ../../secrets/telegram.json) TWITTER_APP=$(cat ../../secrets/twitter-oauth-app.json) tsm ./src/main.ts"
   },
   "dependencies": {
     "@hapi/bell": "^12.3.0",

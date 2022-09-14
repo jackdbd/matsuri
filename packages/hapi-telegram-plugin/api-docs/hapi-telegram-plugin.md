@@ -17,6 +17,7 @@
 |  Variable | Description |
 |  --- | --- |
 |  [\_default](./hapi-telegram-plugin._default.md) |  |
+|  [badRequest](./hapi-telegram-plugin.badrequest.md) |  |
 |  [serverError](./hapi-telegram-plugin.servererror.md) |  |
 |  [teapot](./hapi-telegram-plugin.teapot.md) |  |
 |  [unauthorized](./hapi-telegram-plugin.unauthorized.md) |  |

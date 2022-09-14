@@ -8,6 +8,9 @@ import type Hapi from '@hapi/hapi';
 import { Server } from '@hapi/hapi';
 
 // @public (undocumented)
+export const badRequest: (request: Hapi.Request, event: Hapi.RequestEvent, _tags: Tags) => string;
+
+// @public (undocumented)
 const _default: {
     multiple: boolean;
     name: string;
@@ -41,8 +44,6 @@ export interface RequestEventMatcher {
     token: TelegramToken;
 }
 
-// Warning: (ae-missing-release-tag) "serverError" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public (undocumented)
 export const serverError: (request: Hapi.Request, event: Hapi.RequestEvent, _tags: Tags) => string;
 
@@ -63,8 +64,6 @@ export type TelegramChatId = number | string;
 // @public (undocumented)
 export type TelegramToken = string;
 
-// Warning: (ae-missing-release-tag) "unauthorized" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public (undocumented)
 export const unauthorized: (request: Hapi.Request, event: Hapi.RequestEvent, _tags: Tags) => string;
 
