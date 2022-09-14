@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## @jackdbd/hapi-telegram-plugin [2.2.0](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@2.1.1...@jackdbd/hapi-telegram-plugin@2.2.0) (2022-09-14)
+
+
+### Features
+
+* **hapi-telegram-plugin:** add text for HTTP 400 ([3ade63e](https://github.com/jackdbd/matsuri/commit/3ade63e58edf4380295c1a6049d281bf583e1944))
+
+
+
+### Dependencies
+
+* **@jackdbd/hapi-request-event-predicates:** upgraded to 1.1.0
+
 ## @jackdbd/hapi-telegram-plugin [2.2.0-canary.1](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@2.1.1...@jackdbd/hapi-telegram-plugin@2.2.0-canary.1) (2022-09-14)
 
 
