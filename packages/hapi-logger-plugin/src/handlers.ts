@@ -9,7 +9,8 @@ interface Config {
 }
 
 interface LogEventData {
-  message: string
+  message?: string
+  [k: string]: any
 }
 
 interface RequestEventData {
@@ -58,17 +59,20 @@ export const makeOnLog = ({
     const { channel, timestamp } = event
 
     let message = 'NO event.data (log event)'
+    let additional_data = {} as { [k: string]: any }
 
-    // TODO: event.data might contain other stuff, not just message. Log this stuff!!!
     if (event.data) {
-      message = (event.data as LogEventData).message || 'NO event.data.message'
+      const { message: msg, ...rest } = event.data as LogEventData
+      message = msg || 'NO event.data.message'
+      additional_data = rest
     }
 
     log({
       message,
       tags: tagsWithSeverityTag(event),
       timestamp,
-      channel
+      channel,
+      ...additional_data
     })
   }
 }

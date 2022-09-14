@@ -4,6 +4,12 @@
 
 ## hapi-logger-plugin package
 
+## Interfaces
+
+|  Interface | Description |
+|  --- | --- |
+|  [Options](./hapi-logger-plugin.options.md) | Options for this Hapi plugin. |
+
 ## Variables
 
 |  Variable | Description |

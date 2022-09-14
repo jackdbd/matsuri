@@ -20,9 +20,12 @@ const _default: {
 };
 export default _default;
 
-// Warnings were encountered during analysis:
-//
-// lib/index.d.ts:6:5 - (ae-forgotten-export) The symbol "Options" needs to be exported by the entry point index.d.ts
+// @public
+export interface Options {
+    namespace?: string;
+    should_use_emoji_for_severity?: boolean;
+    should_validate_log_statements?: boolean;
+}
 
 // (No @packageDocumentation comment for this package)
 
