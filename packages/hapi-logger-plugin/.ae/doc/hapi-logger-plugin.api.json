@@ -220,6 +220,104 @@
             "startIndex": 1,
             "endIndex": 8
           }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@jackdbd/hapi-logger-plugin!Options:interface",
+          "docComment": "/**\n * Options for this Hapi plugin.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface Options "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Options",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@jackdbd/hapi-logger-plugin!Options#namespace:member",
+              "docComment": "/**\n * The namespace for the debug logger (unstructured logging). This option has no effect when using structured logging.\n *\n * @defaultValue\n *\n * `undefined`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "namespace?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "namespace",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@jackdbd/hapi-logger-plugin!Options#should_use_emoji_for_severity:member",
+              "docComment": "/**\n * Whether to use an emoji for the severity level (unstructured logging). This option has no effect when using structured logging.\n *\n * @defaultValue\n *\n * `true`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "should_use_emoji_for_severity?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "should_use_emoji_for_severity",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@jackdbd/hapi-logger-plugin!Options#should_validate_log_statements:member",
+              "docComment": "/**\n * Whether each log statement should be validated against a Joi schema.\n *\n * @defaultValue\n *\n * `true`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "should_validate_log_statements?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "should_validate_log_statements",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
         }
       ]
     }

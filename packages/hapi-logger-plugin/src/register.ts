@@ -5,6 +5,11 @@ import { makeOnLog, makeOnRequest } from './handlers.js'
 import { options as schema } from './schemas.js'
 import type { Options } from './schemas.js'
 
+/**
+ * Registers the plugin with a Hapi server.
+ *
+ * @public
+ */
 export const register = async (server: Hapi.Server, options?: Options) => {
   const result = schema.validate(options, {
     allowUnknown: true,

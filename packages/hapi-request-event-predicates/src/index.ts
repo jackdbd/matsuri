@@ -11,6 +11,7 @@
 
 export {
   hasRequestHeaderStripeSignature,
+  isBadRequestError,
   isClientRequestError,
   isForbiddenRequestError,
   isNotFoundRequestError,

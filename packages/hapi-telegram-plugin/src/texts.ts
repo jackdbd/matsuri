@@ -84,6 +84,70 @@ const anchorTags = (links: Link[]) => {
   return links.map((link) => `<a href="${link.href}">${link.text}</a>`)
 }
 
+/**
+ * @public
+ */
+export const badRequest = (
+  request: Hapi.Request,
+  event: Hapi.RequestEvent,
+  _tags: Tags
+) => {
+  let s = `<b>${TITLE}</b>`
+
+  s = `${s}\n<i>${SUBTITLE}</i>`
+
+  s = `${s}\n\n${Emoji.Warning} <b>${summaryFromRequest(request)}</b>`
+
+  s = `${s}\n\n${details(request, event).join('\n\n')}`
+
+  const anchor_tags = anchorTags([
+    {
+      href: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400',
+      text: '400 Bad Request on MDN Web Docs'
+    }
+  ])
+
+  if (anchor_tags.length > 0) {
+    s = `${s}\n\nLinks:\n${anchor_tags.join('\n')}`
+  }
+
+  s.slice(0, CHARACTER_LIMIT_TELEGRAM_MESSAGE)
+
+  return s
+}
+
+/**
+ * @public
+ */
+export const unauthorized = (
+  request: Hapi.Request,
+  event: Hapi.RequestEvent,
+  _tags: Tags
+) => {
+  let s = `<b>${TITLE}</b>`
+
+  s = `${s}\n<i>${SUBTITLE}</i>`
+
+  s = `${s}\n\n${Emoji.Warning} <b>${summaryFromRequest(request)}</b>`
+
+  s = `${s}\n\n${details(request, event).join('\n\n')}`
+
+  const anchor_tags = anchorTags([
+    {
+      href: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401',
+      text: '401 Unauthorized on MDN Web Docs'
+    }
+  ])
+
+  if (anchor_tags.length > 0) {
+    s = `${s}\n\nLinks:\n${anchor_tags.join('\n')}`
+  }
+
+  s.slice(0, CHARACTER_LIMIT_TELEGRAM_MESSAGE)
+
+  return s
+}
+
 export const teapot = (
   request: Hapi.Request,
   event: Hapi.RequestEvent,
@@ -117,35 +181,9 @@ export const teapot = (
   return s
 }
 
-export const unauthorized = (
-  request: Hapi.Request,
-  event: Hapi.RequestEvent,
-  _tags: Tags
-) => {
-  let s = `<b>${TITLE}</b>`
-
-  s = `${s}\n<i>${SUBTITLE}</i>`
-
-  s = `${s}\n\n${Emoji.Warning} <b>${summaryFromRequest(request)}</b>`
-
-  s = `${s}\n\n${details(request, event).join('\n\n')}`
-
-  const anchor_tags = anchorTags([
-    {
-      href: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401',
-      text: '401 Unauthorized on MDN Web Docs'
-    }
-  ])
-
-  if (anchor_tags.length > 0) {
-    s = `${s}\n\nLinks:\n${anchor_tags.join('\n')}`
-  }
-
-  s.slice(0, CHARACTER_LIMIT_TELEGRAM_MESSAGE)
-
-  return s
-}
-
+/**
+ * @public
+ */
 export const serverError = (
   request: Hapi.Request,
   event: Hapi.RequestEvent,

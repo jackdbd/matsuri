@@ -4,6 +4,7 @@
 
 ## serverError variable
 
+
 <b>Signature:</b>
 
 ```typescript

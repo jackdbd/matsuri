@@ -1,7 +1,7 @@
 # matsuri ⛩️
 
 ![CI workflow](https://github.com/jackdbd/matsuri/actions/workflows/ci.yaml/badge.svg)
-![release workflow](https://github.com/jackdbd/matsuri/actions/workflows/release.yaml/badge.svg)
+![Release to npmjs.com workflow](https://github.com/jackdbd/matsuri/actions/workflows/release-to-npmjs.yaml/badge.svg)
 [![codecov](https://codecov.io/gh/jackdbd/matsuri/branch/main/graph/badge.svg?token=P5uJ3doRer)](https://codecov.io/gh/jackdbd/matsuri)
 [![CodeFactor](https://www.codefactor.io/repository/github/jackdbd/matsuri/badge)](https://www.codefactor.io/repository/github/jackdbd/matsuri)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)

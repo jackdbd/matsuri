@@ -10,7 +10,7 @@ export type {
 } from './interfaces.js'
 export type { Tags } from '@jackdbd/hapi-request-event-predicates'
 
-export { unauthorized, serverError, teapot } from './texts.js'
+export { badRequest, serverError, teapot, unauthorized } from './texts.js'
 
 const json = readFileSync(join('.', 'package.json'), { encoding: 'utf-8' })
 const pkg = JSON.parse(json)

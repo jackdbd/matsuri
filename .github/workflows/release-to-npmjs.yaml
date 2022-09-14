@@ -1,4 +1,4 @@
-name: 'release'
+name: 'Release to npmjs.com'
 
 on:
   push:
@@ -7,43 +7,49 @@ on:
       - main
 
 jobs:
-  build-test-release:
-    name: Build & Test all packages on ${{ matrix.os }}, Node ${{ matrix.node }}
+  audit-build-test-release:
+    name: Audit, Build, Test, Release all packages on ${{ matrix.os }}, Node ${{ matrix.node }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: ['18.3.0']
+        # Use the Active LTS for this workflow
+        # https://nodejs.org/en/
+        # https://nodejs.org/en/about/releases/
+        node: ['16.17.0']
     steps:
       - name: 🛎️ Checkout repo
         uses: actions/checkout@v3
 
-      - name: ⚙️ Setup Node.js ${{ matrix.node }}
+      - name: ⚙️ Set up Node.js ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
-      - name: 👀 Check npm version
-        run: npm version
+      # - name: 👀 Check npm version
+      #   run: npm version
 
       - name: ⬇️ Install dependencies
         run: npm ci
 
-      - name: 🔧 Build all libraries
-        run: npm run build
-
-      - name: 🛡️ Audit security (audit-level high)
-        # https://docs.npmjs.com/cli/v8/commands/npm-audit#audit-level
+      - name: 🛡️ Audit dependencies (audit-level high)
         if: ${{ matrix.os }} == 'ubuntu-latest'
+        # https://docs.npmjs.com/cli/v8/commands/npm-audit#audit-level
         run: npm audit --audit-level high
 
-      - name: 🛡️ Audit security (audit-level moderate)
+      - name: 🛡️ Audit dependencies (audit-level moderate)
         continue-on-error: true
         if: ${{ matrix.os }} == 'ubuntu-latest'
         run: npm audit --audit-level moderate
 
+      - name: 📦 Build all libraries
+        run: npm run build:libs
+
       - name: 🔍 Test library @jackdbd/hapi-request-event-predicates
         run: npm run test:ci -w packages/hapi-request-event-predicates
+
+      - name: 🔍 Test library @jackdbd/hapi-healthcheck-plugin
+        run: npm run test:ci -w packages/hapi-healthcheck-plugin
 
       - name: 🔍 Test library @jackdbd/hapi-logger-plugin
         run: npm run test:ci -w packages/hapi-logger-plugin

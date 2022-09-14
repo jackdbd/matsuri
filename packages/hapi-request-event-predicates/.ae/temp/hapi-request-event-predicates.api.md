@@ -10,6 +10,9 @@ import type Hapi from '@hapi/hapi';
 export const hasRequestHeaderStripeSignature: (request: Hapi.Request, _event: Hapi.RequestEvent, _tags: Tags) => boolean;
 
 // @public (undocumented)
+export const isBadRequestError: (_request: Hapi.Request, event: Hapi.RequestEvent, _tags: Tags) => boolean;
+
+// @public (undocumented)
 export const isClientRequestError: (_request: Hapi.Request, event: Hapi.RequestEvent, tags: Tags) => boolean;
 
 // @public (undocumented)

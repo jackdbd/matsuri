@@ -1,5 +1,10 @@
 import Joi from 'joi'
 
+/**
+ * Options for this Hapi plugin.
+ *
+ * @public
+ */
 export interface Options {
   /**
    * The namespace for the debug logger (unstructured logging).

@@ -4,6 +4,7 @@
 
 ## unauthorized variable
 
+
 <b>Signature:</b>
 
 ```typescript

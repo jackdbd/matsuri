@@ -213,6 +213,55 @@
           }
         },
         {
+          "kind": "Variable",
+          "canonicalReference": "@jackdbd/hapi-telegram-plugin!badRequest:var",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "badRequest: "
+            },
+            {
+              "kind": "Content",
+              "text": "(request: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "Request",
+              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", event: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "RequestEvent",
+              "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", _tags: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tags",
+              "canonicalReference": "@jackdbd/hapi-telegram-plugin!Tags:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => string"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "badRequest",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
           "kind": "Interface",
           "canonicalReference": "@jackdbd/hapi-telegram-plugin!Options:interface",
           "docComment": "/**\n * @public\n */\n",
@@ -472,7 +521,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "@jackdbd/hapi-telegram-plugin!serverError:var",
-          "docComment": "",
+          "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -681,7 +730,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "@jackdbd/hapi-telegram-plugin!unauthorized:var",
-          "docComment": "",
+          "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
