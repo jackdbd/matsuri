@@ -19,6 +19,7 @@ Functions that check whether a Hapi request event contains one or more of the fo
 |  Variable | Description |
 |  --- | --- |
 |  [hasRequestHeaderStripeSignature](./hapi-request-event-predicates.hasrequestheaderstripesignature.md) |  |
+|  [isBadRequestError](./hapi-request-event-predicates.isbadrequesterror.md) |  |
 |  [isClientRequestError](./hapi-request-event-predicates.isclientrequesterror.md) |  |
 |  [isForbiddenRequestError](./hapi-request-event-predicates.isforbiddenrequesterror.md) |  |
 |  [isNotFoundRequestError](./hapi-request-event-predicates.isnotfoundrequesterror.md) |  |

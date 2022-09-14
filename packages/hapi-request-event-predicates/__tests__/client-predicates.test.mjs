@@ -1,6 +1,7 @@
 import Boom from '@hapi/boom'
 import Shot from '@hapi/shot'
 import {
+  isBadRequestError,
   isClientRequestError,
   isForbiddenRequestError,
   isUnauthorizedRequestError,
@@ -29,6 +30,23 @@ describe('isClientRequestError', () => {
       event: { error: Boom.tooManyRequests() },
       tags: { error: true, handler: true },
       predicate: isClientRequestError
+    })
+
+    const res = await Shot.inject(dispatch, {
+      method: 'GET',
+      url: '/'
+    })
+
+    expect(res.payload).toBe('PASSED')
+  })
+})
+
+describe('isBadRequestError', () => {
+  it('is true when `error` is Boom.badRequest() and `tags` includes both `error` and `handler`', async () => {
+    const dispatch = makeDispatch({
+      event: { error: Boom.badRequest() },
+      tags: { error: true, handler: true },
+      predicate: isBadRequestError
     })
 
     const res = await Shot.inject(dispatch, {

@@ -223,6 +223,55 @@
         },
         {
           "kind": "Variable",
+          "canonicalReference": "@jackdbd/hapi-request-event-predicates!isBadRequestError:var",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "isBadRequestError: "
+            },
+            {
+              "kind": "Content",
+              "text": "(_request: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "Request",
+              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", event: Hapi."
+            },
+            {
+              "kind": "Reference",
+              "text": "RequestEvent",
+              "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", _tags: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tags",
+              "canonicalReference": "@jackdbd/hapi-request-event-predicates!Tags:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => boolean"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "isBadRequestError",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Variable",
           "canonicalReference": "@jackdbd/hapi-request-event-predicates!isClientRequestError:var",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
