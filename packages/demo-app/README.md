@@ -36,7 +36,7 @@ Deploy the application as a Cloud Run service:
 npm run deploy -w packages/demo-app
 ```
 
-## Usage (TODO)
+## Usage
 
 Make requests to the app:
 

@@ -18,12 +18,14 @@ export const register = async (server: Hapi.Server, options?: Options) => {
   Hoek.assert(!result.error, result.error && result.error.annotate())
 
   const {
+    channels,
     namespace,
     should_use_emoji_for_severity,
     should_validate_log_statements
   } = result.value as Required<Options>
 
   const onLog = makeOnLog({
+    channels,
     namespace: namespace ? `${namespace}/log-event` : undefined,
     should_use_emoji_for_severity,
     should_validate_log_statements
@@ -31,10 +33,13 @@ export const register = async (server: Hapi.Server, options?: Options) => {
 
   server.events.on('log', onLog)
   server.log(['debug', 'plugin', TAG], {
-    message: 'Hapi server registered a `log` event handler, i.e. `server.log()`'
+    message: `Hapi server registered a log event handler, i.e. server.log(). It will log events from these channels: ${channels.join(
+      ', '
+    )}`
   })
 
   const onRequest = makeOnRequest({
+    channels,
     namespace: namespace ? `${namespace}/request-event` : undefined,
     should_use_emoji_for_severity,
     should_validate_log_statements
@@ -42,7 +47,8 @@ export const register = async (server: Hapi.Server, options?: Options) => {
 
   server.events.on('request', onRequest)
   server.log(['debug', 'plugin', TAG], {
-    message:
-      'Hapi server registered a `request` event handler, i.e. `request.log()`'
+    message: `Hapi server registered a request event handler, i.e. request.log(). It will log events from these channels: ${channels.join(
+      ', '
+    )}`
   })
 }

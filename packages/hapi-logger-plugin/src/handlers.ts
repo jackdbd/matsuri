@@ -3,6 +3,7 @@ import { makeLog } from '@jackdbd/tags-logger'
 import { SEVERITY_TAG_VALUES } from './constants.js'
 
 interface Config {
+  channels: string[]
   namespace?: string
   should_use_emoji_for_severity: boolean
   should_validate_log_statements: boolean
@@ -45,6 +46,7 @@ const tagsWithSeverityTag = (event: Hapi.LogEvent | Hapi.RequestEvent) => {
  * @internal
  */
 export const makeOnLog = ({
+  channels,
   namespace,
   should_use_emoji_for_severity,
   should_validate_log_statements
@@ -56,6 +58,9 @@ export const makeOnLog = ({
   })
 
   return function onLog(event, _tags) {
+    if (!channels.includes(event.channel)) {
+      return
+    }
     const { channel, timestamp } = event
 
     let message = 'NO event.data (log event)'
@@ -81,6 +86,7 @@ export const makeOnLog = ({
  * @internal
  */
 export const makeOnRequest = ({
+  channels,
   namespace,
   should_use_emoji_for_severity,
   should_validate_log_statements
@@ -92,6 +98,9 @@ export const makeOnRequest = ({
   })
 
   return function onRequest(_request, event, _tags) {
+    if (!channels.includes(event.channel)) {
+      return
+    }
     const { channel, timestamp } = event
 
     // If event.data has no message and tags-logger is configured to validate

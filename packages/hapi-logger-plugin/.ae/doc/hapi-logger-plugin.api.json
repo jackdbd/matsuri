@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.29.3",
+    "toolVersion": "7.31.0",
     "schemaVersion": 1009,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
@@ -237,6 +237,33 @@
           "members": [
             {
               "kind": "PropertySignature",
+              "canonicalReference": "@jackdbd/hapi-logger-plugin!Options#channels:member",
+              "docComment": "/**\n * The event channels you want to log.\n *\n * @defaultValue\n *\n * `['app']`\n *\n * @see\n *\n * [Hapi 'log' Event](https://hapi.dev/api/?v=21.0.0-beta.1#-log-event)\n *\n * @see\n *\n * [Hapi 'request' Event](https://hapi.dev/api/?v=21.0.0-beta.1#-request-event)\n *\n * @see\n *\n * [podium](https://hapi.dev/module/podium/)\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "channels?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "channels",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "@jackdbd/hapi-logger-plugin!Options#namespace:member",
               "docComment": "/**\n * The namespace for the debug logger (unstructured logging). This option has no effect when using structured logging.\n *\n * @defaultValue\n *\n * `undefined`\n */\n",
               "excerptTokens": [
@@ -292,7 +319,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@jackdbd/hapi-logger-plugin!Options#should_validate_log_statements:member",
-              "docComment": "/**\n * Whether each log statement should be validated against a Joi schema.\n *\n * @defaultValue\n *\n * `true`\n */\n",
+              "docComment": "/**\n * Whether each log statement should be validated against a Joi schema.\n *\n * @defaultValue\n *\n * `false` when `NODE_ENV` is `'production'`, `true` otherwise.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",

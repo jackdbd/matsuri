@@ -16,7 +16,7 @@ const nop = () => {}
 // Note: these tests WOULD print JSON strings since we are using structured
 // logging. They are not printing anything because we add a Jest spy and we
 // provide a mock implementation for console.log
-describe('Hapi server that has registered the hapi-logger-plugin (no options, structured logging)', () => {
+describe('plugin with no options (structured logging)', () => {
   let server
   const spyOnConsoleLog = jest.spyOn(console, 'log')
   spyOnConsoleLog.mockImplementation(nop)
@@ -63,9 +63,54 @@ describe('Hapi server that has registered the hapi-logger-plugin (no options, st
     )
   })
 
-  // TODO: @jackdbd/tags-logger should log only events of the `app` channel.
-  // When @jackdbd/tags-logger will implement this change, there should be only
-  // 1 call to console.log instead of 3.
+  it('responds with 500 for /internal', async () => {
+    const res = await server.inject({ method: 'GET', url: '/internal' })
+
+    expect(res.statusCode).toBe(500)
+    expect(res.result.message).toBe('An internal server error occurred')
+
+    expect(spyOnConsoleLog).toHaveBeenCalledTimes(1)
+
+    const first_call_arg0 = JSON.parse(console.log.mock.calls[0][0])
+
+    expect(first_call_arg0).toEqual(
+      expect.objectContaining({
+        channel: 'app',
+        message: 'GET /internal',
+        request_id: res.request.info.id,
+        severity: 'ERROR',
+        tags: ['internal']
+      })
+    )
+  })
+})
+
+describe('plugin with channels: ["app", "error", "internal"]', () => {
+  let server
+  const spyOnConsoleLog = jest.spyOn(console, 'log')
+  spyOnConsoleLog.mockImplementation(nop)
+  const timeout_ms = 10000
+
+  beforeAll(async () => {
+    server = makeHapiServer()
+
+    await server.register({
+      plugin,
+      options: { channels: ['app', 'error', 'internal'] }
+    })
+    expect(spyOnConsoleLog.mock.calls).toHaveLength(2)
+    spyOnConsoleLog.mockReset()
+  })
+
+  beforeEach(async () => {
+    await server.start()
+  }, timeout_ms)
+
+  afterEach(async () => {
+    await server.stop()
+    spyOnConsoleLog.mockReset()
+  }, timeout_ms)
+
   it('responds with 500 for /internal', async () => {
     const res = await server.inject({ method: 'GET', url: '/internal' })
 
@@ -110,7 +155,7 @@ describe('Hapi server that has registered the hapi-logger-plugin (no options, st
   })
 })
 
-describe('Hapi server that has registered the hapi-logger-plugin (unstructured logging, emoji)', () => {
+describe('plugin with unstructured logging, emoji', () => {
   let server
   const timeout_ms = 10000
 
