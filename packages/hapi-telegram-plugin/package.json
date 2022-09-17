@@ -32,7 +32,7 @@
     ".": "./lib/index.js",
     "./constants": "./lib/constants.js",
     "./interfaces": "./lib/interfaces.js",
-    "./texts": "./lib/texts.js",
+    "./texts": "./lib/texts/index.js",
     "./package.json": "./package.json"
   },
   "typesVersions": {
@@ -63,14 +63,14 @@
     "nuke": "npm run clean && rimraf node_modules 'package-lock.json'",
     "precommit": "lint-staged --config ../../config/lint-staged.cjs",
     "size": "pkg-size ./lib --sort-by=brotli --ignore-files {*.d.ts,*.map}",
-    "test": "../../scripts/test.mjs -- --runInBand --detectOpenHandles",
+    "test": "../../scripts/test.mjs --runInBand --detectOpenHandles",
     "test:ci": "../../scripts/test.mjs --ci",
     "test:watch": "run-p \"build:ts -- --watch\" \"test -- --watch\""
   },
   "dependencies": {
     "@jackdbd/notifications": "^1.0.3",
     "@jackdbd/hapi-request-event-predicates": "1.1.0",
-    "@jackdbd/telegram-text-messages": "^1.1.0"
+    "@jackdbd/telegram-text-messages": "^1.2.0"
   },
   "peerDependencies": {
     "@hapi/hapi": ">=20.0.0",

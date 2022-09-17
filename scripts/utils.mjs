@@ -174,3 +174,37 @@ export const telegramCredentials = () => {
 
   return { chat_id, token }
 }
+
+/**
+ * see Hapi.RequestEvent
+ */
+export const requestEventWithData = ({
+  tags = ['test'],
+  channel = 'app',
+  data = undefined
+}) => {
+  return {
+    timestamp: new Date().getTime(), // ms
+    tags,
+    channel,
+    // data cannot appear together with error
+    data
+  }
+}
+
+/**
+ * see Hapi.RequestEvent
+ */
+export const requestEventWithError = ({
+  tags = ['test'],
+  channel = 'app',
+  error = new Error('an error occurred')
+}) => {
+  return {
+    timestamp: new Date().getTime(), // ms
+    tags,
+    channel,
+    // the error object related to the event if applicable. Cannot appear together with data.
+    error
+  }
+}

@@ -8,7 +8,7 @@ import { TAG } from './constants.js'
 import { options as schema } from './schemas.js'
 import { makeHandleRequest } from './handlers.js'
 import type { Options, RequestEventMatcher } from './interfaces.js'
-import { serverError, unauthorized } from './texts.js'
+import { clientError, serverError } from './texts/index.js'
 
 const telegramCredentialsFromEnvironment = () => {
   if (!process.env.TELEGRAM_CHAT_ID) {
@@ -40,11 +40,16 @@ const defaultRequestEventMatchers = (): RequestEventMatcher[] => {
       chat_id,
       token,
       predicate: isUnauthorizedRequestError,
-      text: unauthorized
+      text: clientError
     }
   ]
 }
 
+/**
+ * Registers the plugin with a Hapi server.
+ *
+ * @public
+ */
 export const register = (server: Hapi.Server, options?: Options) => {
   // consider using Hoek.merge() or Hoek.applyToDefaults()
   // https://hapi.dev/module/hoek/api/?v=10.0.0#mergetarget-source-options
@@ -68,7 +73,10 @@ export const register = (server: Hapi.Server, options?: Options) => {
     }
   }
 
-  const result = schema.validate(config)
+  const result = schema.validate(config, {
+    allowUnknown: true,
+    stripUnknown: true
+  })
   Hoek.assert(!result.error, result.error && result.error.annotate())
 
   const handleRequest = makeHandleRequest({ ...config, server })

@@ -1,6 +1,6 @@
 import type Hapi from '@hapi/hapi'
 import { send } from '@jackdbd/notifications/telegram'
-import { TAG } from './constants.js'
+// import { TAG } from './constants.js'
 import type { Options, TelegramChatId, TelegramToken } from './interfaces.js'
 
 interface Config extends Required<Options> {
@@ -13,8 +13,11 @@ interface Delivery {
   token: TelegramToken
 }
 
+/**
+ * @internal
+ */
 export const makeHandleRequest = (config: Config) => {
-  const { request_event_matchers, server } = config
+  const { request_event_matchers } = config
 
   const handleRequest: Hapi.RequestEventHandler = async (
     request,
@@ -23,13 +26,13 @@ export const makeHandleRequest = (config: Config) => {
   ) => {
     const deliveries: Delivery[] = []
 
-    for (const [idx, matcher] of Object.entries(request_event_matchers)) {
-      const i = parseInt(idx, 10)
-      server.log(['handler', 'plugin', 'telegram', TAG], {
-        message: `check whether request matcher ${i + 1}/${
-          request_event_matchers.length
-        } matches the predicate`
-      })
+    for (const [_idx, matcher] of Object.entries(request_event_matchers)) {
+      // const i = parseInt(idx, 10)
+      // config.server.log(['handler', 'plugin', 'telegram', TAG], {
+      //   message: `check whether request matcher ${i + 1}/${
+      //     request_event_matchers.length
+      //   } matches the predicate`
+      // })
 
       if (matcher.predicate(request, event, tags)) {
         deliveries.push({
