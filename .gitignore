@@ -8,7 +8,7 @@
 secrets/*
 !secrets/README.md
 
-# Turborepo
+# Turborepo logs
 **/.turbo/
 
 # test coverage
