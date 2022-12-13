@@ -1,0 +1,24 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build:docs": {
+      "outputs": ["api-docs/**", ".ae/**", "README.md"],
+      "dependsOn": ["^build:docs"]
+    },
+    "build:ts": {
+      "outputs": ["dist/**", "lib/**"],
+      "dependsOn": ["^build:ts"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "format": {
+      "dependsOn": [],
+      "outputs": []
+    },
+    "lint": {
+      "dependsOn": [],
+      "outputs": []
+    }
+  }
+}

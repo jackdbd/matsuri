@@ -17,7 +17,7 @@
     "url": "https://github.com/jackdbd/matsuri"
   },
   "engines": {
-    "node": ">=18.3.0"
+    "node": ">=16.0.0"
   },
   "type": "module",
   "module": "dist/main.js",
