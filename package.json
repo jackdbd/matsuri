@@ -32,6 +32,9 @@
     "npm": ">=7.0.0"
   },
   "scripts": {
+    "gh": "run-s gh:build gh:test",
+    "gh:build": "npm run build:ts -w packages/hapi-github-issue-plugin",
+    "gh:test": "npm run test -w packages/hapi-github-issue-plugin",
     "app": "npm run start:development -w packages/demo-app",
     "build": "run-s 'build:libs' 'build:apps' --print-label",
     "build:apps": "npm run build -w apps/demo-app",
