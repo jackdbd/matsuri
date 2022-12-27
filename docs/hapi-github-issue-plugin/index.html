@@ -16,7 +16,7 @@
 </a>
 <p><a href="https://badge.fury.io/js/@jackdbd%2Fhapi-github-issue-plugin"><img src="https://badge.fury.io/js/@jackdbd%2Fhapi-github-issue-plugin.svg" alt="npm version"></a>
 <img src="https://img.shields.io/snyk/vulnerabilities/npm/@jackdbd%2Fhapi-github-issue-plugin" alt="Snyk Vulnerabilities for npm package"></p>
-<p>Hapi plugin that...</p>
+<p>Hapi plugin that automatically creates a GitHub issue when a request matches one of the rules you defined.</p>
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 </details>
@@ -28,23 +28,46 @@
 <pre><code class="language-sh"><span class="hl-0">npm install @jackdbd/hapi-github-issue-plugin</span>
 </code></pre>
 
+<a href="#preliminary-operations" id="preliminary-operations" style="color: inherit; text-decoration: none;">
+  <h2>Preliminary Operations</h2>
+</a>
+
+<a href="#github-personal-access-token" id="github-personal-access-token" style="color: inherit; text-decoration: none;">
+  <h3>GitHub personal access token</h3>
+</a>
+<p>This Hapi plugin makes a POST request to <code>{{GitHub-API}}/repos/:owner/:repo/issues</code> whenever an HTTP request matches one of the predicates used to configure the plugin itself. To allow this plugin to create an issue in your GitHub repository, you need to configure it with a <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">GitHub personal access token</a> with the required <a href="https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps">OAuth scopes</a>. You can reuse an existing personal access token, or create a new one.</p>
+<p><img src="../../assets/images/hapi-github-issue-plugin-oauth-scopes.png" alt="OAuth scopes for the hapi-github-issue-plugin"></p>
+
 <a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
   <h2>Usage</h2>
 </a>
+<p>If you register this plugin without passing any options...</p>
 <pre><code class="language-ts"><span class="hl-1">import</span><span class="hl-0"> </span><span class="hl-2">githubIssue</span><span class="hl-0"> </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;@jackdbd/hapi-github-issue-plugin&#39;</span><br/><br/><span class="hl-1">export</span><span class="hl-0"> </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">app</span><span class="hl-0"> = </span><span class="hl-4">async</span><span class="hl-0"> (</span><span class="hl-2">config</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><br/><span class="hl-0">  </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-6">server</span><span class="hl-0"> = </span><span class="hl-2">Hapi</span><span class="hl-0">.</span><span class="hl-5">server</span><span class="hl-0">({ </span><span class="hl-2">port:</span><span class="hl-0"> </span><span class="hl-7">8080</span><span class="hl-0"> })</span><br/><br/><span class="hl-0">  </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">server</span><span class="hl-0">.</span><span class="hl-5">register</span><span class="hl-0">({ </span><span class="hl-2">plugin:</span><span class="hl-0"> </span><span class="hl-2">githubIssue</span><span class="hl-0"> })</span><br/><br/><span class="hl-0">  </span><span class="hl-1">return</span><span class="hl-0"> { </span><span class="hl-2">server</span><span class="hl-0"> }</span><br/><span class="hl-0">}</span>
 </code></pre>
+<p>...it will catch any internal server error and create a GitHub issue like this one:</p>
+<p><img src="../../assets/images/hapi-github-issue-plugin-internal-server-error.png" alt="Telegram message about an internal server error in your Hapi app"></p>
 
 <a href="#configuration" id="configuration" style="color: inherit; text-decoration: none;">
   <h2>Configuration</h2>
 </a>
-<p>TODO</p>
-<pre><code class="language-text">POST {{api}}/repos/:owner/:repo/issues
 
-:owner jackdbd
-:repo matsuri
-</code></pre>
-<pre><code class="language-json"><span class="hl-0">{</span><br/><span class="hl-0">  </span><span class="hl-8">&quot;title&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;Migrate to Turborepo&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-8">&quot;body&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;Follow [this guide](https://turbo.build/repo/docs/getting-started/add-to-project) to migrate.&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-8">&quot;assignees&quot;</span><span class="hl-0">: [</span><span class="hl-3">&quot;jackdbd&quot;</span><span class="hl-0">],</span><br/><span class="hl-0">  </span><span class="hl-8">&quot;milestone&quot;</span><span class="hl-0">: </span><span class="hl-4">null</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-8">&quot;labels&quot;</span><span class="hl-0">: [</span><br/><span class="hl-0">    </span><span class="hl-3">&quot;bug&quot;</span><br/><span class="hl-0">  ]</span><br/><span class="hl-0">}</span>
-</code></pre>
+<a href="#options" id="options" style="color: inherit; text-decoration: none;">
+  <h3>Options</h3>
+</a>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>request_event_matchers</code></td>
+<td>see <code>defaultRequestEventMatchers()</code> in <a href="./src/register.ts">register.ts</a></td>
+<td>Each rule controls which request matches, and which <code>title</code>, <code>body</code>, <code>assignees</code>, <code>milestone</code>, <code>labels</code> to use when creating the GitHub issue.</td>
+</tr>
+</tbody></table>
 </div></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
