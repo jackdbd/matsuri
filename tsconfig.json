@@ -1,6 +1,7 @@
 {
   "extends": "./config/tsconfig.base.json",
   "files": [],
+  // the order is important!
   "references": [
     {
       "path": "./packages/hapi-request-event-predicates/tsconfig.json"
@@ -10,6 +11,9 @@
     },
     {
       "path": "./packages/hapi-logger-plugin/tsconfig.json"
+    },
+    {
+      "path": "./packages/hapi-github-issue-plugin/tsconfig.json"
     },
     {
       "path": "./packages/hapi-telegram-plugin/tsconfig.json"

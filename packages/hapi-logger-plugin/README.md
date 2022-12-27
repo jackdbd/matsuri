@@ -93,6 +93,7 @@ export const app = async (config) => {
 
 | Option | Default | Explanation |
 | --- | --- | --- |
+| `channels` | `['app']` | The event channels you want to log. |
 | `namespace` | `undefined` | The namespace for unstructured logging. This option has no effect when using structured logging. |
 | `should_use_emoji_for_severity` | `true` | Whether to use an emoji for the severity level, when using unstructured logging. This option has no effect when using structured logging. |
-| `should_validate_log_statements` | `true` | Whether each log statement should be validated against a [Joi](https://github.com/sideway/joi) schema. |
+| `should_validate_log_statements` | `false` when `NODE_ENV` is `'production'`, `true` otherwise | Whether each log statement should be validated against a [Joi](https://github.com/sideway/joi) schema. |

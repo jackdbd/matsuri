@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## @jackdbd/hapi-logger-plugin [1.2.0-canary.1](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-logger-plugin@1.1.1...@jackdbd/hapi-logger-plugin@1.2.0-canary.1) (2022-09-17)
+
+
+### Features
+
+* **hapi-logger-plugin:** add channels in options ([7e83bba](https://github.com/jackdbd/matsuri/commit/7e83bba8d8c66943391f4692363d482bfc36f384))
+
 ## @jackdbd/hapi-logger-plugin [1.1.1](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-logger-plugin@1.1.0...@jackdbd/hapi-logger-plugin@1.1.1) (2022-09-14)
 
 

@@ -11,6 +11,7 @@
   "type": "module",
   "keywords": [
     "hapi",
+    "hapi-plugin",
     "monorepo",
     "plugin"
   ],
@@ -23,6 +24,7 @@
   },
   "workspaces": [
     "packages/*",
+    "apps/*",
     "scripts/*"
   ],
   "engines": {
@@ -30,24 +32,26 @@
     "npm": ">=7.0.0"
   },
   "scripts": {
-    "app": "npm run start:development -w packages/demo-app",
     "build": "run-s 'build:libs' 'build:apps' --print-label",
-    "build:apps": "npm run build -w packages/demo-app",
+    "build:apps": "turbo run build:ts --filter demo-app",
     "build:libs": "tsc --build --verbose",
+    "build:ts": "turbo run build:ts",
     "build:docs": "run-s 'build:docs:packages' 'build:docs:index' --print-label",
-    "build:docs:packages": "npm run build:docs --workspaces --if-present",
+    "build:docs:packages": "turbo run build:docs",
     "build:docs:index": "./scripts/docs-index.mjs",
-    "clean": "npm run clean --workspaces --if-present",
-    "format": "npm run format --workspaces --if-present",
-    "lint": "npm run lint --workspaces --if-present",
+    "bulk-delete-issues": "./scripts/bulk-delete-issues.mjs",
+    "clean": "turbo run clean",
+    "demo-app:container:build": "turbo run container:build --filter=demo-app",
+    "demo-app:container:run:development": "turbo run container:run:development --filter=demo-app",
+    "demo-app:start:development": "turbo run start:development --filter=demo-app",
+    "format": "turbo run format",
+    "lint": "turbo run lint",
     "ncu:dev": "ncu --doctor --dep 'dev' --upgrade",
     "nuke": "npm run clean && rm -rf node_modules package-lock.json",
     "precommit": "npm run precommit --workspaces --if-present",
     "prepare": "husky install",
     "release:dry": "multi-semantic-release --no-ci --dry-run --debug --ignore-private --ignore-packages=packages/demo-app",
-    "size": "npm run size --workspaces --if-present",
-    "test": "npm run test --workspaces --if-present",
-    "test:ci": "npm run test:ci --workspaces --if-present",
+    "size": "turbo run size --filter=./packages/* --concurrency=1",
     "webserver": "npx http-server --port 8080"
   },
   "devDependencies": {
@@ -84,8 +88,9 @@
     "rimraf": "^3.0.2",
     "semantic-release": "^19.0.5",
     "tsm": "^2.2.2",
+    "turbo": "^1.6.3",
     "typedoc": "^0.23.14",
     "typescript": "^4.8.3",
-    "zx": "^7.0.8"
+    "zx": "^7.1.1"
   }
 }

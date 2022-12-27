@@ -1,4 +1,9 @@
-import { namespace, options, DEFAULT_OPTIONS } from '../lib/schemas.js'
+import {
+  channels,
+  namespace,
+  options,
+  DEFAULT_OPTIONS
+} from '../lib/schemas.js'
 
 describe('options', () => {
   it('can be `undefined` and defaults to the expected object', () => {
@@ -13,6 +18,21 @@ describe('options', () => {
 
     expect(result.error).not.toBeDefined()
     expect(result.value).toMatchObject(DEFAULT_OPTIONS)
+  })
+})
+
+describe('channels', () => {
+  it('can be `undefined`', () => {
+    const result = channels.validate(undefined)
+
+    expect(result.error).not.toBeDefined()
+    expect(result.value).toBe(undefined)
+  })
+
+  it('must have at least one item', () => {
+    const result = channels.validate([])
+
+    expect(result.error).toBeDefined()
   })
 })
 

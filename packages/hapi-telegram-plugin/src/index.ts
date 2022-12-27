@@ -10,7 +10,12 @@ export type {
 } from './interfaces.js'
 export type { Tags } from '@jackdbd/hapi-request-event-predicates'
 
-export { badRequest, serverError, teapot, unauthorized } from './texts.js'
+export {
+  clientError,
+  serverError,
+  makeGcpCloudRunServiceErrorText
+} from './texts/index.js'
+export type { Config as CloudRunServiceErrorTextConfig } from './texts/cloud-run.js'
 
 const json = readFileSync(join('.', 'package.json'), { encoding: 'utf-8' })
 const pkg = JSON.parse(json)

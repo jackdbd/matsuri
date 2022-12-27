@@ -22,6 +22,7 @@ export default _default;
 
 // @public
 export interface Options {
+    channels?: string[];
     namespace?: string;
     should_use_emoji_for_severity?: boolean;
     should_validate_log_statements?: boolean;

@@ -8,7 +8,17 @@ import type Hapi from '@hapi/hapi';
 import { Server } from '@hapi/hapi';
 
 // @public (undocumented)
-export const badRequest: (request: Hapi.Request, event: Hapi.RequestEvent, _tags: Tags) => string;
+export const clientError: (request: Hapi.Request, event: Hapi.RequestEvent, _tags: Tags) => string;
+
+// Warning: (ae-missing-release-tag) "Config" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export interface CloudRunServiceErrorTextConfig {
+    // (undocumented)
+    cloud_run_service_region_id: string;
+    // (undocumented)
+    gcp_project_id: string;
+}
 
 // @public (undocumented)
 const _default: {
@@ -23,6 +33,11 @@ const _default: {
     version: any;
 };
 export default _default;
+
+// Warning: (ae-missing-release-tag) "makeGcpCloudRunServiceErrorText" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const makeGcpCloudRunServiceErrorText: ({ gcp_project_id, cloud_run_service_region_id }: CloudRunServiceErrorTextConfig) => (request: Hapi.Request, event: Hapi.RequestEvent, tags: Tags) => string;
 
 // @public (undocumented)
 export interface Options {
@@ -53,19 +68,11 @@ export interface Tags {
     [tag: string]: true;
 }
 
-// Warning: (ae-missing-release-tag) "teapot" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
-export const teapot: (request: Hapi.Request, event: Hapi.RequestEvent, _tags: Tags) => string;
-
 // @public (undocumented)
 export type TelegramChatId = number | string;
 
 // @public (undocumented)
 export type TelegramToken = string;
-
-// @public (undocumented)
-export const unauthorized: (request: Hapi.Request, event: Hapi.RequestEvent, _tags: Tags) => string;
 
 // (No @packageDocumentation comment for this package)
 

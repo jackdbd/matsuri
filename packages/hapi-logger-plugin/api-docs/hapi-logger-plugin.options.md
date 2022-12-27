@@ -16,6 +16,7 @@ export interface Options
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
+|  [channels?](./hapi-logger-plugin.options.channels.md) |  | string\[\] | <i>(Optional)</i> The event channels you want to log. |
 |  [namespace?](./hapi-logger-plugin.options.namespace.md) |  | string | <i>(Optional)</i> The namespace for the debug logger (unstructured logging). This option has no effect when using structured logging. |
 |  [should\_use\_emoji\_for\_severity?](./hapi-logger-plugin.options.should_use_emoji_for_severity.md) |  | boolean | <i>(Optional)</i> Whether to use an emoji for the severity level (unstructured logging). This option has no effect when using structured logging. |
 |  [should\_validate\_log\_statements?](./hapi-logger-plugin.options.should_validate_log_statements.md) |  | boolean | <i>(Optional)</i> Whether each log statement should be validated against a Joi schema. |

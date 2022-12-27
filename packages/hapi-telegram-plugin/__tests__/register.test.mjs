@@ -1,5 +1,5 @@
 import { register } from '../lib/register.js'
-import { serverError } from '../lib/texts.js'
+import { serverError } from '../lib/texts/index.js'
 import { makeHapiServer } from '../../../scripts/utils.mjs'
 
 describe('register', () => {

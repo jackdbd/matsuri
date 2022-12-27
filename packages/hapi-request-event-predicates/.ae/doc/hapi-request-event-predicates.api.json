@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.29.3",
+    "toolVersion": "7.31.0",
     "schemaVersion": 1009,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
@@ -183,20 +183,20 @@
             },
             {
               "kind": "Content",
-              "text": "(request: Hapi."
+              "text": "(request: "
             },
             {
               "kind": "Reference",
-              "text": "Request",
-              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+              "text": "Hapi.Request",
+              "canonicalReference": "@types/hapi__hapi!Request:interface"
             },
             {
               "kind": "Content",
-              "text": ", _event: Hapi."
+              "text": ", _event: "
             },
             {
               "kind": "Reference",
-              "text": "RequestEvent",
+              "text": "Hapi.RequestEvent",
               "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
             },
             {
@@ -232,20 +232,20 @@
             },
             {
               "kind": "Content",
-              "text": "(_request: Hapi."
+              "text": "(_request: "
             },
             {
               "kind": "Reference",
-              "text": "Request",
-              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+              "text": "Hapi.Request",
+              "canonicalReference": "@types/hapi__hapi!Request:interface"
             },
             {
               "kind": "Content",
-              "text": ", event: Hapi."
+              "text": ", event: "
             },
             {
               "kind": "Reference",
-              "text": "RequestEvent",
+              "text": "Hapi.RequestEvent",
               "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
             },
             {
@@ -281,20 +281,20 @@
             },
             {
               "kind": "Content",
-              "text": "(_request: Hapi."
+              "text": "(_request: "
             },
             {
               "kind": "Reference",
-              "text": "Request",
-              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+              "text": "Hapi.Request",
+              "canonicalReference": "@types/hapi__hapi!Request:interface"
             },
             {
               "kind": "Content",
-              "text": ", event: Hapi."
+              "text": ", event: "
             },
             {
               "kind": "Reference",
-              "text": "RequestEvent",
+              "text": "Hapi.RequestEvent",
               "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
             },
             {
@@ -330,20 +330,20 @@
             },
             {
               "kind": "Content",
-              "text": "(_request: Hapi."
+              "text": "(_request: "
             },
             {
               "kind": "Reference",
-              "text": "Request",
-              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+              "text": "Hapi.Request",
+              "canonicalReference": "@types/hapi__hapi!Request:interface"
             },
             {
               "kind": "Content",
-              "text": ", event: Hapi."
+              "text": ", event: "
             },
             {
               "kind": "Reference",
-              "text": "RequestEvent",
+              "text": "Hapi.RequestEvent",
               "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
             },
             {
@@ -379,20 +379,20 @@
             },
             {
               "kind": "Content",
-              "text": "(_request: Hapi."
+              "text": "(_request: "
             },
             {
               "kind": "Reference",
-              "text": "Request",
-              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+              "text": "Hapi.Request",
+              "canonicalReference": "@types/hapi__hapi!Request:interface"
             },
             {
               "kind": "Content",
-              "text": ", event: Hapi."
+              "text": ", event: "
             },
             {
               "kind": "Reference",
-              "text": "RequestEvent",
+              "text": "Hapi.RequestEvent",
               "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
             },
             {
@@ -428,20 +428,20 @@
             },
             {
               "kind": "Content",
-              "text": "(_request: Hapi."
+              "text": "(_request: "
             },
             {
               "kind": "Reference",
-              "text": "Request",
-              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+              "text": "Hapi.Request",
+              "canonicalReference": "@types/hapi__hapi!Request:interface"
             },
             {
               "kind": "Content",
-              "text": ", event: Hapi."
+              "text": ", event: "
             },
             {
               "kind": "Reference",
-              "text": "RequestEvent",
+              "text": "Hapi.RequestEvent",
               "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
             },
             {
@@ -477,20 +477,20 @@
             },
             {
               "kind": "Content",
-              "text": "(_request: Hapi."
+              "text": "(_request: "
             },
             {
               "kind": "Reference",
-              "text": "Request",
-              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+              "text": "Hapi.Request",
+              "canonicalReference": "@types/hapi__hapi!Request:interface"
             },
             {
               "kind": "Content",
-              "text": ", event: Hapi."
+              "text": ", event: "
             },
             {
               "kind": "Reference",
-              "text": "RequestEvent",
+              "text": "Hapi.RequestEvent",
               "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
             },
             {
@@ -526,20 +526,20 @@
             },
             {
               "kind": "Content",
-              "text": "(_request: Hapi."
+              "text": "(_request: "
             },
             {
               "kind": "Reference",
-              "text": "Request",
-              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+              "text": "Hapi.Request",
+              "canonicalReference": "@types/hapi__hapi!Request:interface"
             },
             {
               "kind": "Content",
-              "text": ", event: Hapi."
+              "text": ", event: "
             },
             {
               "kind": "Reference",
-              "text": "RequestEvent",
+              "text": "Hapi.RequestEvent",
               "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
             },
             {
@@ -575,20 +575,20 @@
             },
             {
               "kind": "Content",
-              "text": "(request: Hapi."
+              "text": "(request: "
             },
             {
               "kind": "Reference",
-              "text": "Request",
-              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+              "text": "Hapi.Request",
+              "canonicalReference": "@types/hapi__hapi!Request:interface"
             },
             {
               "kind": "Content",
-              "text": ", _event: Hapi."
+              "text": ", _event: "
             },
             {
               "kind": "Reference",
-              "text": "RequestEvent",
+              "text": "Hapi.RequestEvent",
               "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
             },
             {
@@ -624,20 +624,20 @@
             },
             {
               "kind": "Content",
-              "text": "(header_key: string) => (request: Hapi."
+              "text": "(header_key: string) => (request: "
             },
             {
               "kind": "Reference",
-              "text": "Request",
-              "canonicalReference": "@types/hapi__hapi!~Request:interface"
+              "text": "Hapi.Request",
+              "canonicalReference": "@types/hapi__hapi!Request:interface"
             },
             {
               "kind": "Content",
-              "text": ", _event: Hapi."
+              "text": ", _event: "
             },
             {
               "kind": "Reference",
-              "text": "RequestEvent",
+              "text": "Hapi.RequestEvent",
               "canonicalReference": "@types/hapi__hapi!RequestEvent:interface"
             },
             {

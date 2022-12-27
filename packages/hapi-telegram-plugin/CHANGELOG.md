@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## @jackdbd/hapi-telegram-plugin [2.3.0-canary.1](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@2.2.0...@jackdbd/hapi-telegram-plugin@2.3.0-canary.1) (2022-09-17)
+
+
+### Features
+
+* **hapi-telegram-plugin:** add text functions for Cloud Run services ([00981b3](https://github.com/jackdbd/matsuri/commit/00981b3aa9dacbff61aaa0da8edbd94e0ac12c69))
+
 ## @jackdbd/hapi-telegram-plugin [2.2.0](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@2.1.1...@jackdbd/hapi-telegram-plugin@2.2.0) (2022-09-14)
 
 
