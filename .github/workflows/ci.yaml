@@ -74,5 +74,5 @@ jobs:
 
       - name: ✨ Cleanup issues created during tests
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE_BOT_GITHUB_TOKEN }}
         run: npx zx scripts/bulk-delete-issues.mjs
