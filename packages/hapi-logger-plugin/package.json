@@ -1,6 +1,6 @@
 {
   "name": "@jackdbd/hapi-logger-plugin",
-  "version": "1.2.0-canary.1",
+  "version": "1.2.0",
   "description": "Hapi plugin for a JSON logger",
   "author": {
     "name": "Giacomo Debidda",
