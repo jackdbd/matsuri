@@ -1,5 +1,7 @@
 # CHANGELOG
 
+## @jackdbd/hapi-github-issue-plugin [1.0.0-canary.3](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-github-issue-plugin@1.0.0-canary.2...@jackdbd/hapi-github-issue-plugin@1.0.0-canary.3) (2022-12-27)
+
 ## @jackdbd/hapi-github-issue-plugin [1.0.0-canary.2](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-github-issue-plugin@1.0.0-canary.1...@jackdbd/hapi-github-issue-plugin@1.0.0-canary.2) (2022-12-27)
 
 
