@@ -7,6 +7,18 @@ Hapi plugin that uses [tags-logger](https://www.npmjs.com/package/@jackdbd/tags-
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<details><summary><b>Table of Contents<b></summary>
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [structured logging](#structured-logging)
+  - [unstructured logging](#unstructured-logging)
+  - [example: Cloud Run service](#example-cloud-run-service)
+- [Configuration](#configuration)
+  - [Environment variables](#environment-variables)
+  - [Options](#options)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
 
 ## Installation

@@ -57,7 +57,7 @@
     "clean": "rimraf lib/ tsconfig.tsbuildinfo",
     "docs:ae": "../../scripts/api-extractor.mjs",
     "docs:ad": "../../scripts/api-documenter.mjs",
-    "docs:doctoc": "doctoc --github README.md --title '<details><summary>Table of Contents</summary>'",
+    "docs:doctoc": "doctoc --github README.md --title '<details><summary><b>Table of Contents<b></summary>'",
     "docs:typedoc": "../../scripts/typedoc.mjs",
     "format": "../../scripts/format.mjs",
     "lint": "eslint --config ../../config/eslint.cjs",

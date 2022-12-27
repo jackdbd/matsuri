@@ -7,6 +7,16 @@ Hapi plugin that automatically creates a GitHub issue when a request matches one
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<details><summary><b>Table of Contents<b></summary>
+
+- [Installation](#installation)
+- [Preliminary Operations](#preliminary-operations)
+  - [GitHub personal access token](#github-personal-access-token)
+- [Usage](#usage)
+- [Configuration](#configuration)
+  - [Options](#options)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
 
 ## Installation
@@ -21,7 +31,7 @@ npm install @jackdbd/hapi-github-issue-plugin
 
 This Hapi plugin makes a POST request to `{{GitHub-API}}/repos/:owner/:repo/issues` whenever an HTTP request matches one of the predicates used to configure the plugin itself. To allow this plugin to create an issue in your GitHub repository, you need to configure it with a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the required [OAuth scopes](https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps). You can reuse an existing personal access token, or create a new one.
 
-![OAuth scopes for the hapi-github-issue-plugin](../../assets/images/hapi-github-issue-plugin-oauth-scopes.png)
+![OAuth scopes for the hapi-github-issue-plugin](https://raw.githubusercontent.com/jackdbd/matsuri/main/assets/images/hapi-github-issue-plugin-internal-server-error.png)
 
 ## Usage
 
@@ -42,7 +52,7 @@ export const app = async (config) => {
 
 ...it will catch any internal server error and create a GitHub issue like this one:
 
-![Telegram message about an internal server error in your Hapi app](../../assets/images/hapi-github-issue-plugin-internal-server-error.png)
+![Telegram message about an internal server error in your Hapi app](https://raw.githubusercontent.com/jackdbd/matsuri/main/assets/images/hapi-github-issue-plugin-oauth-scopes.png)
 
 You can create a GitHub issue for any kind of request handled by yout Hapi application, as long as you define a request matcher for it. For example, here I configure the plugin to create an issue every time the Hapi app responds with [HTTP 500 internal server error](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500), or when it responds with [HTTP 418 I'm a Teapot](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/418).
 

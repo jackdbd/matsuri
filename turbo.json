@@ -1,10 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
-    "build:docs": {
-      "dependsOn": ["build:ts"],
-      "outputs": ["api-docs/**", ".ae/**", "README.md"]
-    },
     "build:ts": {
       "dependsOn": ["^build:ts"],
       "outputs": ["dist/**", "lib/**"]
@@ -20,6 +16,15 @@
     "deploy": {
       "cache": false,
       "dependsOn": ["build:ts", "test"],
+      "outputs": []
+    },
+    "docs": {
+      "dependsOn": ["build:ts"],
+      "outputs": ["api-docs/**", ".ae/**", "README.md"]
+    },
+    "docs:doctoc": {
+      "cache": false,
+      "dependsOn": [],
       "outputs": []
     },
     "format": {

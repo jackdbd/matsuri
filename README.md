@@ -43,7 +43,8 @@ npm run build:apps
 Build all docs:
 
 ```sh
-npm run build:docs
+npm run docs
+npm run docs:doctoc
 ```
 
 Generate a file size report for each library:

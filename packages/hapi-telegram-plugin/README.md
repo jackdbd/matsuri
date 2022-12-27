@@ -5,25 +5,18 @@
 
 Hapi plugin that sends a message to a Telegram chat when a request matches one of the rules you defined.
 
-You define request rules like this one:
-
-```ts
-{
-  name: 'notify me of any server error (e.g. internal server error)',
-  chat_id: 'YOUR-TELEGRAM-CHAT-ID',
-  token: 'YOUR-TELEGRAM-BOT-TOKEN',
-  predicate: isServerRequestError,
-  text: serverError
-}
-```
-
-...and this plugin sends a Telegram message like this one:
-
-![Telegram message about an internal server error in your Hapi app](https://github.com/jackdbd/matsuri/blob/e295034b8eaf3a9dc83cd9ef6641fa84eb23bcea/assets/images/hapi-telegram-plugin-internal-server-error.png?raw=true)
-
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<details><summary><b>Table of Contents<b></summary>
+
+- [Installation](#installation)
+- [Preliminary Operations](#preliminary-operations)
+  - [Create a Telegram bot with BotFather](#create-a-telegram-bot-with-botfather)
+- [Usage](#usage)
+- [Configuration](#configuration)
+  - [Options](#options)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
 
 ## Installation
@@ -60,6 +53,22 @@ See also the ufficial Telegram documentation:
 - [message formatting options](https://core.telegram.org/bots/api#formatting-options). A Telegram message can be 1-4096 characters long, after entities parsing.
 
 ## Usage
+
+You define request rules like this one:
+
+```ts
+{
+  name: 'notify me of any server error (e.g. internal server error)',
+  chat_id: 'YOUR-TELEGRAM-CHAT-ID',
+  token: 'YOUR-TELEGRAM-BOT-TOKEN',
+  predicate: isServerRequestError,
+  text: serverError
+}
+```
+
+...and this plugin sends a Telegram message like this one:
+
+![Telegram message about an internal server error in your Hapi app](https://github.com/jackdbd/matsuri/blob/e295034b8eaf3a9dc83cd9ef6641fa84eb23bcea/assets/images/hapi-telegram-plugin-internal-server-error.png?raw=true)
 
 Let's say that you want to receive notifications for server errors (i.e. HTTP 5xx), and notifications for unauthorized errors (i.e. HTTP 401). You would configure the plugin like this:
 

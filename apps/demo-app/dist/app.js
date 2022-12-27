@@ -6,6 +6,7 @@ import Inert from '@hapi/inert';
 import Vision from '@hapi/vision';
 import hapi_dev_errors from 'hapi-dev-errors';
 import githubIssue from '@jackdbd/hapi-github-issue-plugin';
+import { defaultTitleFunction, defaultBodyFunction } from '@jackdbd/hapi-github-issue-plugin/texts';
 import logger from '@jackdbd/hapi-logger-plugin';
 import { isServerRequestError, isTeapotRequestError, isUnauthorizedRequestError } from '@jackdbd/hapi-request-event-predicates';
 import telegram from '@jackdbd/hapi-telegram-plugin';
@@ -77,8 +78,26 @@ export const app = async () => {
     server.log(['debug', 'plugin'], {
         message: `plugin ${logger.name} registered`
     });
-    server.register({
-        plugin: githubIssue
+    await server.register({
+        plugin: githubIssue,
+        options: {
+            request_event_matchers: [
+                {
+                    predicate: isServerRequestError,
+                    title: defaultTitleFunction,
+                    body: defaultBodyFunction,
+                    assignees: ['jackdbd'],
+                    labels: ['bug', 'matsuri-test']
+                },
+                {
+                    predicate: isTeapotRequestError,
+                    title: defaultTitleFunction,
+                    body: defaultBodyFunction,
+                    assignees: ['jackdbd'],
+                    labels: ['teapot', 'matsuri-test']
+                }
+            ]
+        }
     });
     server.log(['debug', 'plugin'], {
         message: `plugin ${githubIssue.name} registered`
