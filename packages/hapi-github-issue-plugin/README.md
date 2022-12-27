@@ -44,6 +44,60 @@ export const app = async (config) => {
 
 ![Telegram message about an internal server error in your Hapi app](../../assets/images/hapi-github-issue-plugin-internal-server-error.png)
 
+You can create a GitHub issue for any kind of request handled by yout Hapi application, as long as you define a request matcher for it. For example, here I configure the plugin to create an issue every time the Hapi app responds with [HTTP 500 internal server error](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500), or when it responds with [HTTP 418 I'm a Teapot](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/418).
+
+```ts
+// import the plugin itself
+import githubIssue from '@jackdbd/hapi-github-issue-plugin'
+
+// define the functions that create the issue title/body somewhere
+// in your app, or import them from a library.
+import {
+  defaultTitleFunction,
+  defaultBodyFunction
+} from '@jackdbd/hapi-github-issue-plugin/texts'
+
+// define your request predicates somewhere in your app,
+// or import them from a library.
+import {
+  isServerRequestError,
+  isUnauthorizedRequestError
+} from '@jackdbd/hapi-request-event-predicates'
+
+export const app = async (config) => {
+
+  const server = Hapi.server({ port: 8080 })
+
+  await server.register({
+    plugin: githubIssue,
+    options: {
+      request_event_matchers: [
+        // create an issues every time the Hapi app responds with
+        // HTTP 500 Internal Server Error, and assign it to bob.
+        {
+          predicate: isServerRequestError,
+          title: defaultTitleFunction,
+          body: defaultBodyFunction,
+          assignees: ['bob'],
+          labels: ['bug', 'matsuri-test']
+        },
+        // create an issues every time the Hapi app responds with
+        // HTTP 418 I'm a teapot, and assign it to john.
+        {
+          predicate: isTeapotRequestError,
+          title: defaultTitleFunction,
+          body: defaultBodyFunction,
+          assignees: ['john'],
+          labels: ['teapot', 'matsuri-test']
+        }
+      ]
+    }
+  })
+
+  return { server }
+}
+```
+
 
 ## Configuration
 
