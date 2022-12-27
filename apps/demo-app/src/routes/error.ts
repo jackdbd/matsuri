@@ -62,7 +62,7 @@ export const errorGet = () => {
         }
 
         default: {
-          throw new Error(`this is route an internal error`)
+          throw new Error(`this route always throws an internal error`)
         }
       }
     },

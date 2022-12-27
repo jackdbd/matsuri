@@ -5,6 +5,7 @@ import Blipp from 'blipp'
 import Inert from '@hapi/inert'
 import Vision from '@hapi/vision'
 import hapi_dev_errors from 'hapi-dev-errors'
+import githubIssue from '@jackdbd/hapi-github-issue-plugin'
 import logger from '@jackdbd/hapi-logger-plugin'
 import {
   isServerRequestError,
@@ -62,7 +63,7 @@ export const app = async () => {
   const { chat_id: telegram_chat_id, token: telegram_token } =
     telegram_credentials as TelegramCredentials
 
-  const server = Hapi.server({
+  const server: any = Hapi.server({
     // disable Hapi debug console logging, since I don't particulary like it and
     // I prefer writing my own loggers for development/production.
     debug: false,
@@ -77,11 +78,11 @@ export const app = async () => {
     }
   })
 
-  await server.register(Inert)
+  await server.register(Inert as any)
 
-  await server.register(Bell)
+  await server.register(Bell as any)
 
-  await server.register(Vision)
+  await server.register(Vision as any)
 
   server.views({
     engines: {
@@ -93,7 +94,7 @@ export const app = async () => {
             return template.render(context)
           }
         },
-        prepare: (options: any, next) => {
+        prepare: (options: any, next: any) => {
           options.compileOptions.environment = Nunjucks.configure(
             options.path,
             { watch: false } // watch requires chokidar to be installed
@@ -107,7 +108,7 @@ export const app = async () => {
   })
 
   // the @hapi/cookie plugin defines a 'cookie' scheme
-  await server.register({ plugin: AuthCookie })
+  await server.register({ plugin: AuthCookie as any })
 
   if (process.env.NODE_END === 'development') {
     await server.register({
@@ -128,6 +129,13 @@ export const app = async () => {
   })
   server.log(['debug', 'plugin'], {
     message: `plugin ${logger.name} registered`
+  })
+
+  server.register({
+    plugin: githubIssue as any
+  })
+  server.log(['debug', 'plugin'], {
+    message: `plugin ${githubIssue.name} registered`
   })
 
   const request_event_matchers: RequestEventMatcher[] = [

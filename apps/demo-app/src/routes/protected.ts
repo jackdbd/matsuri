@@ -4,7 +4,7 @@ import Hoek from '@hapi/hoek'
 export const protectedGet = (): Hapi.ServerRoute => {
   return {
     method: 'GET',
-    handler: (request, h) => {
+    handler: (request, h: any) => {
       Hoek.assert(
         request.auth.isAuthenticated,
         'only authenticated requests should reach this handler'

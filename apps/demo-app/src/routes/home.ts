@@ -2,7 +2,7 @@ import type Hapi from '@hapi/hapi'
 
 export const homeGet = (): Hapi.ServerRoute => {
   return {
-    handler: async (request, h) => {
+    handler: async (request, h: any) => {
       request.log(['debug', 'handler', 'home', 'index'], {
         message: `got ${request.method} request at ${request.path}`
       })

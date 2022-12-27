@@ -32,6 +32,7 @@
   "exports": {
     ".": "./lib/index.js",
     "./constants": "./lib/constants.js",
+    "./interfaces": "./lib/interfaces.js",
     "./texts": "./lib/texts.js",
     "./package.json": "./package.json"
   },

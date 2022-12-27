@@ -3,7 +3,7 @@ import type Hapi from '@hapi/hapi'
 export const logout = (): Hapi.ServerRoute => {
   return {
     method: 'GET',
-    handler: (request, h) => {
+    handler: (request: any, h: any) => {
       request.cookieAuth.clear()
 
       return h.view('logout', {

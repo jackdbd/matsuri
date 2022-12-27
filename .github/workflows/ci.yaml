@@ -56,6 +56,11 @@ jobs:
       - name: 🔍 Test library @jackdbd/hapi-request-event-predicates
         run: npx turbo run test:ci --filter hapi-request-event-predicates
 
+      - name: 🔍 Test library @jackdbd/hapi-github-issue-plugin
+        env:
+          GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_BOT_GITHUB_TOKEN }}
+        run: npx turbo run test:ci --filter hapi-github-issue-plugin
+
       - name: 🔍 Test library @jackdbd/hapi-healthcheck-plugin
         run: npx turbo run test:ci --filter hapi-healthcheck-plugin
 

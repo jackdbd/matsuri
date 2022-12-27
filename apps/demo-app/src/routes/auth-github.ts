@@ -4,7 +4,7 @@ import type { Session } from '../interfaces.js'
 export const authGitHub = (): Hapi.ServerRoute => {
   return {
     method: ['GET', 'POST'],
-    handler: (request, h) => {
+    handler: (request: any, h: any) => {
       if (request.auth.isAuthenticated) {
         // The 3rd-party credentials (i.e. the user's github credentials in this
         // case) are stored in request.auth.credentials.

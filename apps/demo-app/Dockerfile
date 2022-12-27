@@ -31,7 +31,6 @@ RUN npm install --save-dev \
   @types/node \
   @types/hapi__bell \
   @types/hapi__cookie \
-  @types/hapi__hapi \
   @types/hapi__inert \
   @types/hapi__vision \
   @types/nunjucks

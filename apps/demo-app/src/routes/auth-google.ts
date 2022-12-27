@@ -4,7 +4,7 @@ import type Hapi from '@hapi/hapi'
 export const authGoogle = (): Hapi.ServerRoute => {
   return {
     method: ['GET', 'POST'],
-    handler: (request, h) => {
+    handler: (request: any, h: any) => {
       if (request.auth.isAuthenticated) {
         // The 3rd-party credentials are stored in request.auth.credentials.
         const profile = request.auth.credentials.profile as any
