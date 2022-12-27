@@ -6,10 +6,10 @@ Hapi application to showcase the usage of several Hapi plugins.
 
 ### Non-containerized application
 
-Start the application (development environment):
+Start the application (development environment) on port `8080` (or on the environment variable `PORT`):
 
 ```sh
-npm run start:development -w packages/demo-app
+npm run demo-app:start:development
 ```
 
 *Note*: no need to build the app because I am using [tsm](https://github.com/lukeed/tsm).
@@ -19,13 +19,13 @@ npm run start:development -w packages/demo-app
 Build the container image:
 
 ```sh
-npm run container:build -w packages/demo-app
+npm run demo-app:container:build
 ```
 
 Start the application:
 
 ```sh
-npm run container:run:development -w packages/demo-app
+npm run demo-app:container:run:development
 ```
 
 ## Deploy
@@ -33,7 +33,7 @@ npm run container:run:development -w packages/demo-app
 Deploy the application as a Cloud Run service:
 
 ```sh
-npm run deploy -w packages/demo-app
+npx turbo run deploy --filter demo-app
 ```
 
 ## Usage

@@ -41,11 +41,3 @@ Run all tests on all packages:
 ```sh
 npm run test
 ```
-
-## Demo app
-
-Start the demo Hapi app:
-
-```sh
-npm run start:development -w packages/demo-app
-```
