@@ -1,6 +1,6 @@
 {
   "name": "@jackdbd/hapi-github-issue-plugin",
-  "version": "1.0.0-canary.1",
+  "version": "1.0.0-canary.2",
   "description": "Hapi plugin that automatically creates a GitHub issue every time your app encounters an error",
   "author": {
     "name": "Giacomo Debidda",
