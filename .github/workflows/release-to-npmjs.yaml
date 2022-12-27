@@ -46,18 +46,18 @@ jobs:
         run: npm run build:libs
 
       - name: 🔍 Test library @jackdbd/hapi-request-event-predicates
-        run: npm run test:ci -w packages/hapi-request-event-predicates
+        run: npx turbo run test:ci --filter hapi-request-event-predicates
 
       - name: 🔍 Test library @jackdbd/hapi-healthcheck-plugin
-        run: npm run test:ci -w packages/hapi-healthcheck-plugin
+        run: npx turbo run test:ci --filter hapi-healthcheck-plugin
 
       - name: 🔍 Test library @jackdbd/hapi-logger-plugin
-        run: npm run test:ci -w packages/hapi-logger-plugin
+        run: npx turbo run test:ci --filter hapi-logger-plugin
       
       - name: 🔍 Test library @jackdbd/hapi-telegram-plugin
         env:
           TELEGRAM: ${{ secrets.TELEGRAM }}
-        run: npm run test:ci -w packages/hapi-telegram-plugin
+        run: npx turbo run test:ci --filter hapi-telegram-plugin
         
       - name: 🚀 Release to npmjs
         env:
