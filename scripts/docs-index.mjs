@@ -8,7 +8,7 @@ import { throwIfNotInvokedFromMonorepoRoot } from './utils.mjs'
 $.verbose = false
 
 // Usage (from the monorepo root):
-// ../../scripts/docs-index.mjs
+// ./scripts/docs-index.mjs
 
 throwIfNotInvokedFromMonorepoRoot(process.env.PWD)
 

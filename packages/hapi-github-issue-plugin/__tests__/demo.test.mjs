@@ -65,7 +65,7 @@ describe('Hapi server that has registered the hapi-github-issue-plugin (custom c
         },
         assignees: ['jackdbd'],
         // milestone: 1,
-        labels: ['bug', 'test']
+        labels: ['bug', 'matsuri-test']
       },
       {
         predicate: isTeapotRequestError,
@@ -76,7 +76,7 @@ describe('Hapi server that has registered the hapi-github-issue-plugin (custom c
           return `Test issue body (teapot)`
         },
         assignees: ['jackdbd'],
-        labels: ['teapot', 'test']
+        labels: ['teapot', 'matsuri-test']
       }
     ]
 

@@ -51,3 +51,11 @@ Generate a file size report for each library:
 ```sh
 npm run size
 ```
+
+## Docs
+
+See [docs](./docs/README.md).
+
+## Scripts
+
+See [scripts](./scripts/README.md).
