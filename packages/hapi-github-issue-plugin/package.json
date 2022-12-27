@@ -1,6 +1,6 @@
 {
   "name": "@jackdbd/hapi-github-issue-plugin",
-  "version": "0.0.1",
+  "version": "1.0.0-canary.1",
   "description": "Hapi plugin that automatically creates a GitHub issue every time your app encounters an error",
   "author": {
     "name": "Giacomo Debidda",
@@ -68,7 +68,7 @@
     "test:watch": "run-p \"build:ts -- --watch\" \"test -- --watch\""
   },
   "dependencies": {
-    "@jackdbd/hapi-request-event-predicates": "^1.1.0",
+    "@jackdbd/hapi-request-event-predicates": "1.1.0",
     "@octokit/core": "^4.1.0"
   },
   "peerDependencies": {
