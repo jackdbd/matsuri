@@ -20,7 +20,7 @@ steps:
   # https://cloud.google.com/run/docs/configuring/environment-variables#escaping
 
   - id: '🚀 Deploy application as a Cloud Run service'
-    name: gcr.io/cloud-builders/gcloud:${_GCLOUD_VERSION}
+    name: gcr.io/cloud-builders/gcloud:latest
     entrypoint: /bin/bash
     args:
       - -c
@@ -37,9 +37,10 @@ steps:
           --service-account ${_SERVICE_ACCOUNT} \
           --set-env-vars NODE_ENV=production \
           --set-secrets APP_CONFIG=${_APP_CONFIG_SECRET_NAME}:${_APP_CONFIG_SECRET_VERSION} \
-          --set-secrets GITHUB_OAUTH_APP=${_GITHUB_OAUTH_APP_SECRET_NAME}:${_GITHUB_OAUTH_APP_SECRET_VERSION} \
-          --set-secrets GOOGLE_OAUTH_APP=${_GOOGLE_OAUTH_APP_SECRET_NAME}:${_GOOGLE_OAUTH_APP_SECRET_VERSION} \
-          --set-secrets TELEGRAM=${_TELEGRAM_SECRET_NAME}:${_TELEGRAM_SECRET_VERSION} \
+          --set-secrets GITHUB_OAUTH_APP=${_GITHUB_OAUTH_APP_SECRET_NAME}:latest \
+          --set-secrets GITHUB_TOKEN=${_GITHUB_TOKEN_SECRET_NAME}:latest \
+          --set-secrets GOOGLE_OAUTH_APP=${_GOOGLE_OAUTH_APP_SECRET_NAME}:latest \
+          --set-secrets TELEGRAM=${_TELEGRAM_SECRET_NAME}:latest \
           --timeout ${_CLOUD_RUN_SERVICE_REQUEST_TIMEOUT} \
           --update-labels customer=${_CUSTOMER},resource=cloud_run_service \
           --verbosity warning
@@ -58,16 +59,13 @@ substitutions:
   _CONTAINER_IMAGE_TAG: latest
   _CUSTOMER: personal
   _GITHUB_OAUTH_APP_SECRET_NAME: MATSURI_DEMO_APP_GITHUB_OAUTH_APP
-  _GITHUB_OAUTH_APP_SECRET_VERSION: latest
+  _GITHUB_TOKEN_SECRET_NAME: GITHUB_TOKEN
   _GOOGLE_OAUTH_APP_SECRET_NAME: MATSURI_DEMO_APP_GOOGLE_OAUTH_APP
-  _GOOGLE_OAUTH_APP_SECRET_VERSION: latest
-  _GCLOUD_VERSION: latest
   # M = megabyte, Mi = mebibyte, G = gigabyte, Gi = gibibyte
   # https://cloud.google.com/run/docs/configuring/memory-limits
   _MEMORY: 256M
   _SERVICE_ACCOUNT: sa-matsuri-demo-app@${PROJECT_ID}.iam.gserviceaccount.com
   _TELEGRAM_SECRET_NAME: TELEGRAM
-  _TELEGRAM_SECRET_VERSION: latest
 
 options:
     dynamic_substitutions: true

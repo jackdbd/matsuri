@@ -25,7 +25,15 @@ npm run demo-app:container:build
 Start the application:
 
 ```sh
-npm run demo-app:container:run:development
+docker run -it --rm -p 8080:8080 \
+  --env APP_CONFIG="$(cat ./secrets/demo-app-config-development.json)" \
+  --env DEBUG="demo-app*" \
+  --env GITHUB_OAUTH_APP="$(cat ./secrets/github-oauth-app.json)" \
+  --env GITHUB_TOKEN="$(cat ./secrets/github-token.txt)" \
+  --env GOOGLE_OAUTH_APP="$(cat ./secrets/google-oauth-app.json)" \
+  --env NODE_ENV=development \
+  --env TELEGRAM="$(cat ./secrets/telegram.json)" \
+  matsuri-demo-app:latest
 ```
 
 ## Deploy
