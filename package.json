@@ -39,6 +39,7 @@
     "build:docs": "run-s 'build:docs:packages' 'build:docs:index' --print-label",
     "build:docs:packages": "turbo run build:docs",
     "build:docs:index": "./scripts/docs-index.mjs",
+    "bulk-delete-issues": "./scripts/bulk-delete-issues.mjs",
     "clean": "turbo run clean",
     "demo-app:container:build": "turbo run container:build --filter=demo-app",
     "demo-app:container:run:development": "turbo run container:run:development --filter=demo-app",
@@ -90,6 +91,6 @@
     "turbo": "^1.6.3",
     "typedoc": "^0.23.14",
     "typescript": "^4.8.3",
-    "zx": "^7.0.8"
+    "zx": "^7.1.1"
   }
 }

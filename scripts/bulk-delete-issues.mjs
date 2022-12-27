@@ -1,7 +1,9 @@
 #!/usr/bin/env zx
-
 import { chalk, $ } from 'zx'
 import 'zx/globals'
+
+// Note: deleting an issue is NOT the same thing as closing an issue
+// https://docs.github.com/en/issues/tracking-your-work-with-issues/deleting-an-issue
 
 // https://github.com/google/zx#configuration
 $.verbose = false

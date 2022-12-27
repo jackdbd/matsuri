@@ -71,3 +71,6 @@ jobs:
         env:
           TELEGRAM: ${{ secrets.TELEGRAM }}
         run: npx turbo run test:ci --filter hapi-telegram-plugin
+
+      - name: ✨ Cleanup issues created during tests
+        run: npx zx scripts/bulk-delete-issues.mjs
