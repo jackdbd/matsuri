@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## @jackdbd/hapi-telegram-plugin [2.3.1](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@2.3.0...@jackdbd/hapi-telegram-plugin@2.3.1) (2023-01-10)
+
+
+### Bug Fixes
+
+* **hapi-telegram-plugin:** add .js extension for relative import ([c45f9d1](https://github.com/jackdbd/matsuri/commit/c45f9d1d48a854e467baed63c2a8a24bd8a760a0))
+* **hapi-telegram-plugin:** update exports and typesVersions ([c3e431d](https://github.com/jackdbd/matsuri/commit/c3e431d3e7e239d5d0984182cb6d700e5c6cae18))
+
 ## @jackdbd/hapi-telegram-plugin [2.3.0](https://github.com/jackdbd/matsuri/compare/@jackdbd/hapi-telegram-plugin@2.2.0...@jackdbd/hapi-telegram-plugin@2.3.0) (2022-12-27)
 
 
