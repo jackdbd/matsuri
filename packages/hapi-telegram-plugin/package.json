@@ -33,11 +33,18 @@
     ".": "./lib/index.js",
     "./constants": "./lib/constants.js",
     "./interfaces": "./lib/interfaces.js",
+    "./schemas": "./lib/schemas.js",
     "./texts": "./lib/texts/index.js",
     "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
+      "texts": [
+        "./lib/texts/index.d.ts"
+      ],
+      "texts/*": [
+        "./lib/texts/*.d.ts"
+      ],
       "*": [
         "./lib/*.d.ts"
       ]
