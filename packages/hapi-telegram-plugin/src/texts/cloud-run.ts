@@ -4,7 +4,7 @@ import {
   gcpCloudRunServiceText as serviceText,
   gcpCloudRunServiceErrorText as errorText
 } from '@jackdbd/telegram-text-messages'
-import { Emoji } from '../constants'
+import { Emoji } from '../constants.js'
 import { clientError } from './client-error.js'
 import { serverError } from './server-error.js'
 import { summaryFromRequest } from './utils.js'
