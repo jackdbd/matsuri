@@ -28,23 +28,16 @@ npm install
 
 This monorepo uses [Typescript project references](https://www.typescriptlang.org/docs/handbook/project-references.html) to build all of its libraries, and [Turborepo](https://turbo.build/repo) for all other tasks.
 
-Build all libraries:
-
-```sh
-npm run build:libs
-```
-
 Build all libraries and applications:
 
 ```sh
-npm run build:apps
+npm run build
 ```
 
-Build all docs:
+Build the docs of all packages, and also an index page:
 
 ```sh
 npm run docs
-npm run docs:doctoc
 ```
 
 Generate a file size report for each library:

@@ -22,11 +22,6 @@
       "dependsOn": ["build:ts"],
       "outputs": ["api-docs/**", ".ae/**", "README.md"]
     },
-    "docs:doctoc": {
-      "cache": false,
-      "dependsOn": [],
-      "outputs": []
-    },
     "format": {
       "dependsOn": [],
       "outputs": []

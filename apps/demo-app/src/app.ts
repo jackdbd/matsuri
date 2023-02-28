@@ -164,21 +164,21 @@ export const app = async () => {
     {
       name: 'notify of any server error',
       text: serverError,
-      predicate: isServerRequestError,
+      predicate: isServerRequestError as any,
       chat_id: telegram_chat_id,
       token: telegram_token
     },
     {
       name: 'notify of any HTTP 401 Unauthorized (client error)',
       text: unauthorized,
-      predicate: isUnauthorizedRequestError,
+      predicate: isUnauthorizedRequestError as any,
       chat_id: telegram_chat_id,
       token: telegram_token
     },
     {
       name: `notify of any HTTP 418 I'm a Teapot (client error)`,
       text: teapot,
-      predicate: isTeapotRequestError,
+      predicate: isTeapotRequestError as any,
       chat_id: telegram_chat_id,
       token: telegram_token
     }

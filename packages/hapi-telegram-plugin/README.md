@@ -7,7 +7,7 @@ Hapi plugin that sends a message to a Telegram chat when a request matches one o
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-<details><summary><b>Table of Contents<b></summary>
+<details><summary>Table of Contents</summary>
 
 - [Installation](#installation)
 - [Preliminary Operations](#preliminary-operations)
@@ -35,9 +35,8 @@ This Hapi plugin makes a POST request to the [/sendMessage](https://core.telegra
 
 Create a Telegram bot with the following steps:
 
-1. Open a Telegram chat with BotFather and enter the `/newbot` command
+1. Open a Telegram chat with BotFather and enter the `/newbot` command.
 1. Choose a `name` and a `username` for your bot. The `name` can be anything and you can change it any time. The `username` is unique, you cannot change it, and must end with `_bot`. Write down the bot `token` that BotFather returns you.
-1. Il token del bot lo puoi vedere in BotFather, selezionando il bot e poi API tokens.
 
 > :information_source: You can see your Telegram bot `token` at any time:
 >
