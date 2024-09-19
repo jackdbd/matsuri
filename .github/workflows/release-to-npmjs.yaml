@@ -13,16 +13,15 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        # Use the Active LTS for this workflow
-        # https://nodejs.org/en/
+        # Use the Node.js Active LTS for this workflow
         # https://nodejs.org/en/about/releases/
-        node: ['16.17.0']
+        node: ['lts/iron']
     steps:
       - name: 🛎️ Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: ⚙️ Set up Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
@@ -46,23 +45,23 @@ jobs:
         run: npm run build:libs
 
       - name: 🔍 Test library @jackdbd/hapi-request-event-predicates
-        run: npx turbo run test:ci --filter hapi-request-event-predicates
+        run: npx turbo run test:ci --filter ./packages/hapi-request-event-predicates
 
       - name: 🔍 Test library @jackdbd/hapi-github-issue-plugin
         env:
           GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_BOT_GITHUB_TOKEN }}
-        run: npx turbo run test:ci --filter hapi-github-issue-plugin
+        run: npx turbo run test:ci --filter ./packages/hapi-github-issue-plugin
 
       - name: 🔍 Test library @jackdbd/hapi-healthcheck-plugin
-        run: npx turbo run test:ci --filter hapi-healthcheck-plugin
+        run: npx turbo run test:ci --filter ./packages/hapi-healthcheck-plugin
 
       - name: 🔍 Test library @jackdbd/hapi-logger-plugin
-        run: npx turbo run test:ci --filter hapi-logger-plugin
+        run: npx turbo run test:ci --filter ./packages/hapi-logger-plugin
       
       - name: 🔍 Test library @jackdbd/hapi-telegram-plugin
         env:
           TELEGRAM: ${{ secrets.TELEGRAM }}
-        run: npx turbo run test:ci --filter hapi-telegram-plugin
+        run: npx turbo run test:ci --filter ./packages/hapi-telegram-plugin
         
       - name: 🚀 Release to npmjs
         env:

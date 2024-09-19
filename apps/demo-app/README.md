@@ -41,7 +41,9 @@ docker run -it --rm -p 8080:8080 \
 Deploy the application as a Cloud Run service:
 
 ```sh
-npx turbo run deploy --filter demo-app
+npx turbo run deploy --filter @jackdbd/demo-app
+# in alternative:
+npx turbo run deploy --filter ./apps/demo-app
 ```
 
 ## Test
