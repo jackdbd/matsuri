@@ -1,8 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "build:ts": {
-      "dependsOn": ["^build:ts"],
+      "dependsOn": [],
       "outputs": ["dist/**", "lib/**"]
     },
     "clean": {
@@ -10,7 +10,7 @@
     },
     "container:build": {
       "cache": false,
-      "dependsOn": ["^build:ts"],
+      "dependsOn": ["build:ts"],
       "outputs": []
     },
     "deploy": {
@@ -39,11 +39,11 @@
       "outputs": []
     },
     "test": {
-      "dependsOn": ["^build:ts"],
+      "dependsOn": ["build:ts"],
       "outputs": ["coverage/**"]
     },
     "test:ci": {
-      "dependsOn": ["^build:ts"],
+      "dependsOn": ["build:ts"],
       "outputs": ["coverage/**"]
     }
   }

@@ -40,6 +40,7 @@
           cowthink "Welcome to this nix dev shell!" --bold -f tux --rainbow
           echo "Versions:"
           echo "- Node.js $(node --version)"
+          echo "- npm $(npm --version)"
 
           # export FOO=bar;
         '';

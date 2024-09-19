@@ -22,6 +22,7 @@
   "bugs": {
     "url": "https://github.com/jackdbd/matsuri/issues?q=is%3Aissue+label%3Abug"
   },
+  "packageManager": "npm@10.8.2",
   "workspaces": [
     "packages/*",
     "apps/*",
@@ -33,7 +34,7 @@
   },
   "scripts": {
     "build": "run-s 'build:libs' 'build:apps' --print-label",
-    "build:apps": "turbo run build:ts --filter demo-app",
+    "build:apps": "turbo run build:ts --filter @jackdbd/demo-app",
     "build:libs": "tsc --build --verbose",
     "build:ts": "turbo run build:ts",
     "bulk-delete-issues": "./scripts/bulk-delete-issues.mjs",
@@ -86,7 +87,7 @@
     "rimraf": "^3.0.2",
     "semantic-release": "^19.0.5",
     "tsm": "^2.2.2",
-    "turbo": "^1.6.3",
+    "turbo": "^2.1.2",
     "typedoc": "^0.23.14",
     "typescript": "^4.8.3",
     "zx": "^7.1.1"
