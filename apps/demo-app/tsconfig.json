@@ -16,10 +16,6 @@
     // https://www.typescriptlang.org/tsconfig#forceConsistentCasingInFileNames
     "forceConsistentCasingInFileNames": true,
 
-    // I wonder why this is not the default.
-    // https://www.typescriptlang.org/tsconfig#importsNotUsedAsValues
-    "importsNotUsedAsValues": "error",
-
     // https://www.typescriptlang.org/tsconfig#lib
     "lib": ["ES2021"],
 
@@ -56,10 +52,9 @@
     "target": "es2020",
 
     // https://www.typescriptlang.org/tsconfig#typeRoots
-    "typeRoots": ["../../node_modules/@types", "../../custom-types"]
+    "typeRoots": ["../../node_modules/@types", "../../custom-types"],
 
-    // https://www.typescriptlang.org/tsconfig#types
-    // "types": ["node", "hapi__hapi"]
+    "verbatimModuleSyntax": true
   },
   "include": ["./src/**/*.ts"]
 }

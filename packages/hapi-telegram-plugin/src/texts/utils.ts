@@ -1,9 +1,9 @@
-import type Hapi from '@hapi/hapi'
+import type { Request, RequestEvent } from '@hapi/hapi'
 
 /**
  * @internal
  */
-export const summaryFromRequest = (request: Hapi.Request) => {
+export const summaryFromRequest = (request: Request) => {
   const { query, route } = request
 
   let qs: string | undefined = undefined
@@ -26,14 +26,14 @@ export const summaryFromRequest = (request: Hapi.Request) => {
 /**
  * @internal
  */
-export const tagsFromEvent = (event: Hapi.RequestEvent) => {
+export const tagsFromEvent = (event: RequestEvent) => {
   return `Tags:\n${event.tags.join(', ')}`
 }
 
 /**
  * @internal
  */
-export const timestampFromEvent = (event: Hapi.RequestEvent) => {
+export const timestampFromEvent = (event: RequestEvent) => {
   const timestamp = event.timestamp
 
   return `Timestamp:\n<code>${timestamp}</code> (${new Date(
@@ -44,7 +44,7 @@ export const timestampFromEvent = (event: Hapi.RequestEvent) => {
 /**
  * @internal
  */
-export const requestId = (request: Hapi.Request) => {
+export const requestId = (request: Request) => {
   // const request_id = (event as any).request || 'unknown request id'
   const request_id = request.info.id
   return `Request ID:\n<code>${request_id}</code>`
@@ -53,7 +53,7 @@ export const requestId = (request: Hapi.Request) => {
 /**
  * @internal
  */
-export const requestHeaders = (request: Hapi.Request) => {
+export const requestHeaders = (request: Request) => {
   if (!request.headers) {
     return ''
   }

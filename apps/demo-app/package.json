@@ -43,20 +43,20 @@
     "start:development": "APP_CONFIG=$(cat ../../secrets/demo-app-config-development.json) DEBUG=demo-app* GITHUB_OAUTH_APP=$(cat ../../secrets/github-oauth-app.json) GOOGLE_OAUTH_APP=$(cat ../../secrets/google-oauth-app.json) NODE_ENV=development TELEGRAM=$(cat ../../secrets/telegram.json) TWITTER_APP=$(cat ../../secrets/twitter-oauth-app.json) tsm ./src/main.ts"
   },
   "dependencies": {
-    "@hapi/bell": "13.0.0",
-    "@hapi/cookie": "12.0.0",
-    "@hapi/hapi": "21.1.0",
-    "@hapi/inert": "7.0.0",
-    "@hapi/vision": "7.0.0",
+    "@hapi/bell": "13.0.2",
+    "@hapi/cookie": "12.0.1",
+    "@hapi/hapi": "21.3.10",
+    "@hapi/inert": "7.1.0",
+    "@hapi/vision": "7.0.3",
     "@jackdbd/hapi-github-issue-plugin": "1.0.0-canary.2",
     "@jackdbd/hapi-logger-plugin": "1.0.0-canary.3",
     "@jackdbd/hapi-request-event-predicates": "1.0.0-canary.1",
     "@jackdbd/hapi-telegram-plugin": "2.0.0-canary.1",
     "blipp": "4.0.2",
-    "exiting": "6.1.0",
+    "exiting": "7.0.0",
     "hapi-dev-errors": "4.0.0",
-    "joi": "17.7.0",
-    "nunjucks": "3.2.3"
+    "joi": "17.13.3",
+    "nunjucks": "3.2.4"
   },
   "peerDependencies": {},
   "devDependencies": {}

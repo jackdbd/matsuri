@@ -112,7 +112,13 @@ export const makeOnRequest = ({
     // `event.data`. I'm not sure whether I should log these events or not.
     // https://github.com/hapijs/podium/tree/master
 
-    const data = event.data || {}
+    let data: object
+    if (typeof event.data === 'string') {
+      data = JSON.parse(event.data) as object
+    } else {
+      data = event.data
+    }
+
     const message =
       (data as RequestEventData).message || 'NO event.data.message'
 

@@ -76,12 +76,12 @@
     "test:watch": "run-p \"build:ts -- --watch\" \"test -- --watch\""
   },
   "dependencies": {
-    "@jackdbd/notifications": "^1.0.3",
     "@jackdbd/hapi-request-event-predicates": "1.1.0",
+    "@jackdbd/notifications": "^1.0.3",
     "@jackdbd/telegram-text-messages": "^1.2.0"
   },
   "peerDependencies": {
-    "@hapi/hapi": ">=20.0.0",
+    "@hapi/hapi": ">=21.2.0",
     "joi": ">=17.0.0"
   },
   "devDependencies": {}
